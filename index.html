@@ -24,30 +24,32 @@
         }
     </script>
     <style>
-        body { background-color: #05070a; color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        body { background-color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
-        /* Mencegah angka bergetar */
+        /* Angka stabil & tabular agar tidak goyang saat berputar */
         #odometer { 
             font-variant-numeric: tabular-nums; 
-            letter-spacing: -0.05em;
+            letter-spacing: -0.02em;
         }
 
-        /* Overlay transparan agar video & gambar terlihat */
-        .light-overlay { background: rgba(0, 0, 0, 0.3); } 
-        .dark-gradient { background: linear-gradient(to bottom, rgba(5,7,10,0) 0%, rgba(5,7,10,0.8) 100%); }
-
-        .fade-in { opacity: 0; transition: opacity 1.5s ease-in-out; }
+        .fade-in { opacity: 0; transition: opacity 1s ease-in-out; }
         .fade-in.visible { opacity: 1; }
-
         .hidden-element { display: none; }
+
+        .bg-fixed-air {
+            background-image: url('air.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-[100] backdrop-blur-md border-b border-white/10">
+    <nav class="fixed top-0 w-full z-[100] backdrop-blur-md border-b border-black/5">
         <div class="max-w-7xl mx-auto px-8 h-24 flex items-center justify-between">
-            <img src="logo-invila-white.png" alt="Invila" class="h-8">
-            <div class="hidden md:flex space-x-10 text-[10px] font-bold tracking-[0.3em] uppercase opacity-60">
+            <img src="logo-invila-white.png" alt="Invila" class="h-8 brightness-0"> 
+            <div class="hidden md:flex space-x-10 text-[10px] font-bold tracking-[0.3em] uppercase text-black opacity-60">
                 <a href="#audit" class="hover:text-royalBlue transition-all">Risk Audit</a>
                 <a href="#case-study" class="hover:text-royalBlue transition-all">Case Study</a>
             </div>
@@ -57,68 +59,32 @@
         </div>
     </nav>
 
-    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-ink">
-        
-        <video id="heroVideo" autoplay muted playsinline class="absolute z-30 w-full h-full object-cover">
+    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-white">
+        <video id="heroVideo" autoplay muted playsinline class="absolute z-50 w-full h-full object-cover">
             <source src="landingpage_front_optimized.mp4" type="video/mp4">
         </video>
 
-        <div id="heroImage" class="absolute inset-0 z-10 hidden bg-cover bg-center" style="background-image: url('air.jpg');">
-            <div class="absolute inset-0 light-overlay"></div>
-            <div class="absolute inset-0 dark-gradient"></div>
-        </div>
+        <div id="heroImage" class="absolute inset-0 z-10 hidden bg-fixed-air"></div>
 
         <div id="contentOverlay" class="relative z-40 text-center px-6 hidden opacity-0 transition-opacity duration-1000">
-            <h2 class="text-royalBlue font-bold tracking-[0.5em] uppercase text-[10px] mb-6">
+            <h2 class="text-black font-bold tracking-[0.5em] uppercase text-[10px] mb-6 opacity-70">
                 Verified Industrial Performance.
             </h2>
             
             <div class="mb-8">
-                <span id="odometer" class="text-6xl md:text-[11rem] font-black text-royalBlue leading-none">0</span>
+                <span id="odometer" class="text-7xl md:text-[11rem] font-black text-royalBlue leading-none">79.150.000</span>
                 <span class="text-3xl md:text-5xl font-light text-royalBlue ml-2 italic font-serif">m³</span>
             </div>
 
             <div class="max-w-3xl mx-auto">
-                <p class="text-lg md:text-2xl font-light leading-relaxed text-slate-300">
-                    Bukan sekadar volume, ini adalah <strong class="text-white">akumulasi risiko yang berhasil kami mitigasi</strong> selama dua dekade.
+                <p class="text-lg md:text-2xl font-light leading-relaxed text-black">
+                    Bukan sekadar volume, ini adalah <strong class="font-black underline decoration-royalBlue">akumulasi risiko yang berhasil kami mitigasi</strong> selama dua dekade.
                 </p>
-                <div class="mt-10">
-                    <a href="https://invilawatertreatment-blip.github.io/akumulasi-kapasitas-terpasang-dan-Logo-klien/" target="_blank" class="text-[10px] font-black uppercase tracking-[0.3em] border-b border-royalBlue pb-2 hover:text-royalBlue transition-all">
+                <div class="mt-12">
+                    <a href="https://invilawatertreatment-blip.github.io/akumulasi-kapasitas-terpasang-dan-Logo-klien/" target="_blank" class="text-[10px] font-black uppercase tracking-[0.3em] border-b-2 border-black pb-2 text-black hover:text-royalBlue hover:border-royalBlue transition-all">
                         View Audited Capacity Portfolio →
                     </a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="audit" class="py-32 bg-white text-ink">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="grid md:grid-cols-3 gap-1 rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100">
-                <div class="bg-slate-50 p-12">
-                    <h4 class="text-roseAccent font-bold uppercase text-[10px] tracking-widest mb-4">Situation</h4>
-                    <p class="text-sm leading-relaxed text-slate-500 italic">"Tagihan PDAM yang fluktuatif merusak EBITDA Anda."</p>
-                </div>
-                <div class="bg-royalBlue p-12 text-white">
-                    <h4 class="font-bold uppercase text-[10px] tracking-widest mb-4 opacity-60">Crisis Response</h4>
-                    <p class="text-sm leading-relaxed text-blue-100 italic">"Implementasi instan WaaS tanpa birokrasi tender."</p>
-                </div>
-                <div class="bg-ink p-12 text-white">
-                    <h4 class="text-green-400 font-bold uppercase text-[10px] tracking-widest mb-4">Resolution</h4>
-                    <p class="text-sm leading-relaxed text-slate-400 italic">"Fixed Rate selama 120 bulan. EBITDA aman."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="case-study" class="py-32 bg-surface text-ink">
-        <div class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-20 items-center">
-            <div class="space-y-8">
-                <h3 class="text-5xl font-black tracking-tight">PT Alivni Internasional<span class="text-royalBlue">:</span> Audit Report</h3>
-                <p class="text-slate-500 text-lg">Kebocoran finansial <span class="text-roseAccent font-bold">Rp 1,09 Miliar</span> berhasil dimitigasi melalui efisiensi WaaS.</p>
-                <img src="tagihan-pdam-alivni.jpg" class="w-full rounded-3xl grayscale shadow-xl" alt="Bill">
-            </div>
-            <div class="bg-white rounded-[3rem] shadow-2xl overflow-hidden h-[600px] border border-slate-200">
-                <iframe src="https://invilawatertreatment-blip.github.io/laporan-keuanagn-PT-Alivni/" class="w-full h-full" scrolling="no"></iframe>
             </div>
         </div>
     </section>
@@ -143,25 +109,21 @@
             window.requestAnimationFrame(step);
         }
 
-        // Kejadian saat video selesai (1x putar)
         heroVideo.onended = function() {
-            // 1. Hilangkan video
             heroVideo.style.transition = "opacity 1s ease";
             heroVideo.style.opacity = "0";
             
             setTimeout(() => {
                 heroVideo.classList.add('hidden-element');
-                
-                // 2. Munculkan Background Air.jpg
                 heroImage.classList.remove('hidden');
                 heroImage.classList.add('fade-in');
                 setTimeout(() => heroImage.classList.add('visible'), 50);
 
-                // 3. Munculkan Content & Mulai Odometer
                 contentOverlay.classList.remove('hidden');
                 setTimeout(() => {
                     contentOverlay.style.opacity = "1";
-                    animateValue(0, 79154776, 3000);
+                    // REVISI: Mulai dari 79.150.000 ke 79.154.776 (Hanya gerak sedikit agar elegan)
+                    animateValue(79150000, 79154776, 2000);
                 }, 500);
             }, 1000);
         };
