@@ -3,178 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invila™ | Sovereign Industrial Water Infrastructure</title>
+    <title>Invila™ | Industrial Water Infrastructure</title>
     
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        ink: '#05070a',
-                        royalBlue: '#2563eb',
-                        surface: '#f8fafc',
-                    }
+                    colors: { royalBlue: '#2563eb', ink: '#05070a' }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100dvh; }
+        body { background-color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         #odometer { font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-        .fade-in { opacity: 0; transition: opacity 1s ease-in-out; }
-        .fade-in.visible { opacity: 1; }
         .hidden-element { display: none !important; }
         
-        .bg-fixed-air {
+        /* Background Gambar Mobile Friendly */
+        .bg-hero {
             background-image: url('air.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: scroll;
         }
-        @media (min-width: 1024px) {
-            .bg-fixed-air { background-attachment: fixed; }
-        }
+        @media (min-width: 1024px) { .bg-hero { background-attachment: fixed; } }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased text-black">
 
     <nav class="fixed top-0 w-full z-[100] backdrop-blur-md border-b border-black/5 bg-white/80">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-24 flex items-center justify-between">
-            <img src="logo-invila-white.png" alt="Invila" class="h-6 md:h-8 brightness-0"> 
-            <a href="https://wa.me/622188866168" class="bg-royalBlue text-white px-5 md:px-8 py-2 md:py-3 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
+        <div class="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+            <img src="logo-invila-white.png" alt="Invila" class="h-6 md:h-7 brightness-0"> 
+            <a href="https://wa.me/622188866168" class="bg-royalBlue text-white px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
                 Site Audit
             </a>
         </div>
     </nav>
 
-    <section class="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-white pt-24 md:pt-32 pb-12">
+    <section class="relative min-h-[100dvh] w-full flex flex-col justify-center items-center pt-24 pb-12 px-6">
         
-        <video id="heroVideo" muted playsinline class="absolute z-50 w-full h-full object-cover">
+        <video id="heroVideo" muted playsinline class="absolute inset-0 z-50 w-full h-full object-cover">
             <source src="landingpage_front_optimized.mp4" type="video/mp4">
         </video>
 
-        <div id="heroImage" class="absolute inset-0 z-10 hidden bg-fixed-air">
-            <div class="absolute inset-0 bg-white/20"></div>
-        </div>
+        <div id="heroImage" class="absolute inset-0 z-10 hidden bg-hero opacity-20"></div>
 
-        <div id="contentOverlay" class="relative z-40 text-center px-4 md:px-6 hidden opacity-0 transition-opacity duration-1000">
+        <div id="contentOverlay" class="relative z-40 text-center w-full max-w-6xl hidden opacity-0 transition-opacity duration-700">
             
-            <h2 class="text-black font-black tracking-[0.3em] uppercase text-[10px] md:text-lg mb-6 md:mb-10 opacity-80">
-                Verified Industrial Performance.
-            </h2>
+            <p class="text-royalBlue font-black tracking-[0.3em] uppercase text-[9px] md:text-xs mb-4">
+                Verified Performance
+            </p>
             
             <div class="mb-8 md:mb-12">
-                <span id="odometer" class="text-5xl sm:text-7xl lg:text-[9rem] font-black text-royalBlue leading-none">79.150.000</span>
-                <span class="text-2xl lg:text-7xl font-light text-royalBlue ml-1 md:ml-2 italic font-serif">m³</span>
+                <span id="odometer" class="text-5xl md:text-[10rem] font-black leading-none text-black">79.150.000</span>
+                <span class="text-2xl md:text-6xl font-light text-royalBlue ml-1">m³</span>
             </div>
 
-            <div class="max-w-xs sm:max-w-3xl lg:max-w-5xl mx-auto">
-                <p class="text-lg md:text-3xl font-light leading-snug text-black mb-10 md:mb-20">
-                    Bukan sekadar volume, ini adalah <strong class="font-black underline decoration-royalBlue decoration-2 md:decoration-4">akumulasi risiko yang berhasil kami mitigasi</strong> selama dua dekade.
+            <div class="max-w-3xl mx-auto mb-16">
+                <p class="text-lg md:text-3xl font-light leading-snug text-black/90">
+                    Bukan sekadar volume, ini adalah <strong class="font-black border-b-4 border-royalBlue">akumulasi risiko yang kami mitigasi</strong> selama dua dekade operasional.
                 </p>
-                
-                <a href="https://invilawatertreatment-blip.github.io/akumulasi-kapasitas-terpasang-dan-Logo-klien/" target="_blank" class="inline-block bg-royalBlue text-white px-8 md:px-12 py-4 md:py-6 rounded-full text-xs md:text-base font-black uppercase tracking-[0.2em] shadow-xl shadow-royalBlue/30 active:scale-95 transition-all mb-16 md:mb-24">
-                    Lihat Portofolio
-                </a>
+            </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left border-t-2 md:border-t-4 border-black pt-10 md:pt-16">
-                    
-                    <div class="space-y-3">
-                        <h4 class="text-base md:text-xl font-black uppercase tracking-widest text-royalBlue">Financial Asset</h4>
-                        <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
-                            <strong class="text-black">Zero Capex Model.</strong> Mengalihkan beban investasi menjadi efisiensi operasional murni (OPEX). 100% Off-Balance Sheet.
-                        </p>
-                    </div>
-
-                    <div class="space-y-3 border-l-0 md:border-l-2 border-black/10 md:pl-10">
-                        <h4 class="text-base md:text-xl font-black uppercase tracking-widest text-royalBlue">Operational Stability</h4>
-                        <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
-                            <strong class="text-black">99.98% Uptime.</strong> Dua dekade mengamankan kontinuitas air untuk <span class="text-black font-bold">publik, industri manufaktur dan kawasan industri.</span>
-                        </p>
-                    </div>
-
-                    <div class="space-y-3 border-l-0 md:border-l-2 border-black/10 md:pl-10">
-                        <h4 class="text-base md:text-xl font-black uppercase tracking-widest text-royalBlue">Compliance Safety</h4>
-                        <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
-                            <strong class="text-black">Risk Transfer.</strong> Kami mengambil alih tanggung jawab regulasi. Zero friction dengan standar lingkungan nasional.
-                        </p>
-                    </div>
-
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left border-t border-black/10 pt-10">
+                <div class="space-y-2">
+                    <h4 class="font-black text-royalBlue uppercase text-xs tracking-widest">Financial</h4>
+                    <p class="text-sm md:text-base text-black/70">
+                        <strong class="text-black">Zero Capex.</strong> Bebaskan arus kas Anda. Efisiensi air 100% Off-Balance Sheet.
+                    </p>
+                </div>
+                <div class="space-y-2 md:border-l md:border-black/10 md:pl-8">
+                    <h4 class="font-black text-royalBlue uppercase text-xs tracking-widest">Operational</h4>
+                    <p class="text-sm md:text-base text-black/70">
+                        <strong class="text-black">99.98% Uptime.</strong> Jaminan kontinuitas air untuk publik dan kawasan industri.
+                    </p>
+                </div>
+                <div class="space-y-2 md:border-l md:border-black/10 md:pl-8">
+                    <h4 class="font-black text-royalBlue uppercase text-xs tracking-widest">Compliance</h4>
+                    <p class="text-sm md:text-base text-black/70">
+                        <strong class="text-black">Risk Transfer.</strong> Kami mengambil alih seluruh risiko regulasi lingkungan nasional.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-<script>
-    // Pastikan script berjalan setelah DOM siap
-    document.addEventListener('DOMContentLoaded', () => {
+    <script>
         const heroVideo = document.getElementById('heroVideo');
         const heroImage = document.getElementById('heroImage');
         const contentOverlay = document.getElementById('contentOverlay');
         const odometer = document.getElementById('odometer');
 
-        function animateValue(start, end, duration) {
+        function animateOdo(start, end, duration) {
             let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const value = Math.floor(progress * (end - start) + start);
-                odometer.innerHTML = value.toLocaleString('id-ID');
+                odometer.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString('id-ID');
                 if (progress < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
         }
 
-        function showMainContent(isInstant = false) {
+        function reveal(isInstant = false) {
             if (!contentOverlay.classList.contains('hidden')) return;
-
             if (isInstant) {
-                // Sembunyikan video sepenuhnya tanpa play
                 heroVideo.classList.add('hidden-element');
                 heroImage.classList.remove('hidden');
-                heroImage.classList.add('visible');
                 contentOverlay.classList.remove('hidden');
                 contentOverlay.style.opacity = "1";
-                animateValue(79150000, 79154776, 500); 
+                animateOdo(79150000, 79154776, 500);
             } else {
-                heroVideo.style.transition = "opacity 0.8s ease";
                 heroVideo.style.opacity = "0";
                 setTimeout(() => {
                     heroVideo.classList.add('hidden-element');
                     heroImage.classList.remove('hidden');
-                    heroImage.classList.add('fade-in');
-                    setTimeout(() => heroImage.classList.add('visible'), 50);
                     contentOverlay.classList.remove('hidden');
                     setTimeout(() => {
                         contentOverlay.style.opacity = "1";
-                        animateValue(79150000, 79154776, 2000);
-                    }, 300);
-                }, 800);
+                        animateOdo(79150000, 79154776, 2000);
+                    }, 100);
+                }, 500);
             }
-            sessionStorage.setItem('videoWatched', 'true');
+            sessionStorage.setItem('vWatched', 'true');
         }
 
-        // LOGIKA REDIRECT & SESSION
-        const urlParams = new URLSearchParams(window.location.search);
-        const skipVideo = urlParams.get('skipvideo');
-        const hasWatched = sessionStorage.getItem('videoWatched');
-
-        if (skipVideo === 'true' || hasWatched === 'true') {
-            showMainContent(true);
-        } else {
-            heroVideo.play().catch(() => showMainContent(false));
-            heroVideo.onended = () => showMainContent(false);
-            
-            // Failsafe 5 detik
-            setTimeout(() => {
-                if (contentOverlay.classList.contains('hidden')) showMainContent(false);
-            }, 5000);
-        }
-    });
-</script>
+        window.onload = () => {
+            const watched = sessionStorage.getItem('vWatched') || new URLSearchParams(window.location.search).get('skipvideo');
+            if (watched === 'true') {
+                reveal(true);
+            } else {
+                heroVideo.play().catch(() => reveal(true));
+                heroVideo.onended = () => reveal(false);
+                setTimeout(() => reveal(true), 5000); // Failsafe
+            }
+        };
+    </script>
 </body>
 </html>
