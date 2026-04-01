@@ -67,7 +67,6 @@
         
         <video id="heroVideo" muted playsinline preload="auto" class="absolute inset-0 z-50 w-full h-full object-cover">
             <source src="landingpage_front_optimized.mp4" type="video/mp4">
-            Maaf, browser Anda tidak mendukung pemutaran video.
         </video>
 
         <div id="heroImage" class="absolute inset-0 z-10 hidden bg-hero opacity-30">
@@ -77,16 +76,16 @@
         <div id="contentOverlay" class="relative z-40 text-center w-full max-w-6xl hidden opacity-0">
             
             <p class="text-royalBlue font-black tracking-[0.3em] uppercase text-[9px] md:text-xs mb-4">
-                Verified Performance
+                Annual Verified Performance
             </p>
             
             <div class="mb-10 md:mb-14">
                 <span id="odometer" class="text-5xl md:text-[10rem] font-black leading-none text-black">79.150.000</span>
-                <span class="text-2xl md:text-5xl font-light text-royalBlue ml-1 italic lowercase">m³ / year</span>
+                <span class="text-2xl md:text-5xl font-light text-royalBlue ml-1 italic lowercase">m³</span>
             </div>
 
-            <div class="max-w-4xl mx-auto mb-16 md:mb-24 text-center text-black/90">
-                <p class="text-xl md:text-4xl font-light leading-snug">
+            <div class="max-w-4xl mx-auto mb-16 md:mb-24 text-center">
+                <p class="text-xl md:text-4xl font-light leading-snug text-black/90">
                     Bukan sekadar volume, ini adalah <strong class="font-black border-b-4 border-royalBlue">akumulasi risiko yang berhasil kami mitigasi</strong> selama dua dekade operasional. Sejak 2006, Invila™ telah menjadi mesin tak terlihat di balik operasional kepentingan publik dan berbagai industri di Indonesia. Hari ini, kami mengubah skala otoritas ini menjadi perisai finansial untuk EBITDA Anda.
                 </p>
             </div>
@@ -94,20 +93,20 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-left border-t border-black/10 pt-12 mb-20 md:mb-32">
                 <div class="space-y-3">
                     <h4 class="font-black text-royalBlue uppercase text-xs md:text-xl tracking-widest noto-serif">Financial</h4>
-                    <p class="text-sm md:text-lg leading-relaxed font-medium">
+                    <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
                         <strong class="text-black">Zero Capex Model.</strong> Mengalihkan beban investasi menjadi efisiensi operasional murni (OPEX). 100% Off-Balance Sheet.
                     </p>
                 </div>
                 <div class="space-y-3 md:border-l-2 md:border-black/5 md:pl-10">
                     <h4 class="font-black text-royalBlue uppercase text-xs md:text-xl tracking-widest noto-serif">Operational</h4>
-                    <p class="text-sm md:text-lg leading-relaxed font-medium">
+                    <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
                         <strong class="text-black">99.98% Uptime.</strong> Dua dekade mengamankan kontinuitas air untuk publik, manufaktur, dan kawasan industri.
                     </p>
                 </div>
                 <div class="space-y-3 md:border-l-2 md:border-black/5 md:pl-10">
                     <h4 class="font-black text-royalBlue uppercase text-xs md:text-xl tracking-widest noto-serif">Compliance</h4>
-                    <p class="text-sm md:text-lg leading-relaxed font-medium">
-                        <strong class="text-black">Risk Transfer.</strong> Kami mengambil alih seluruh tanggung jawab regulasi. Zero friction dengan standar lingkungan nasional.
+                    <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
+                        <strong class="text-black">Risk Transfer.</strong> Kami mengambil alih seluruh risiko regulasi. Zero friction dengan standar lingkungan nasional.
                     </p>
                 </div>
             </div>
@@ -172,30 +171,19 @@
             sessionStorage.setItem('vWatched', 'true');
         }
 
-        // LOGIKA LOADING VIDEO YANG LEBIH TANGGUH
         window.onload = () => {
             const watched = sessionStorage.getItem('vWatched') || new URLSearchParams(window.location.search).get('skipvideo');
             
             if (watched === 'true') {
                 reveal(true);
             } else {
-                // Pastikan video mencoba diputar
                 const playPromise = heroVideo.play();
-                
                 if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.log("Autoplay dicegah oleh browser, memunculkan konten...");
-                        reveal(true);
-                    });
+                    playPromise.catch(() => reveal(true));
                 }
-                
                 heroVideo.onended = () => reveal(false);
-                
-                // Failsafe 6 detik: jika video macet, jangan biarkan layar kosong
                 setTimeout(() => {
-                    if (contentOverlay.classList.contains('hidden')) {
-                        reveal(true);
-                    }
+                    if (contentOverlay.classList.contains('hidden')) reveal(true);
                 }, 6000);
             }
         };
