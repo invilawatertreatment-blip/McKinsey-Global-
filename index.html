@@ -36,6 +36,7 @@
         .fade-in.visible { opacity: 1; }
         .hidden-element { display: none; }
 
+        /* Latar belakang air.jpg yang Fixed/Diam saat scroll */
         .bg-fixed-air {
             background-image: url('air.jpg');
             background-size: cover;
@@ -53,18 +54,21 @@
                 <a href="#audit" class="hover:text-royalBlue transition-all">Risk Audit</a>
                 <a href="#case-study" class="hover:text-royalBlue transition-all">Case Study</a>
             </div>
-            <a href="https://wa.me/622188866168" class="bg-royalBlue text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest">
+            <a href="https://wa.me/622188866168" class="bg-royalBlue text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all">
                 Site Audit
             </a>
         </div>
     </nav>
 
     <section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-white">
+        
         <video id="heroVideo" autoplay muted playsinline class="absolute z-50 w-full h-full object-cover">
             <source src="landingpage_front_optimized.mp4" type="video/mp4">
         </video>
 
-        <div id="heroImage" class="absolute inset-0 z-10 hidden bg-fixed-air"></div>
+        <div id="heroImage" class="absolute inset-0 z-10 hidden bg-fixed-air">
+            <div class="absolute inset-0 bg-white/10"></div>
+        </div>
 
         <div id="contentOverlay" class="relative z-40 text-center px-6 hidden opacity-0 transition-opacity duration-1000">
             <h2 class="text-black font-bold tracking-[0.5em] uppercase text-[10px] mb-6 opacity-70">
@@ -80,9 +84,10 @@
                 <p class="text-lg md:text-2xl font-light leading-relaxed text-black">
                     Bukan sekadar volume, ini adalah <strong class="font-black underline decoration-royalBlue">akumulasi risiko yang berhasil kami mitigasi</strong> selama dua dekade.
                 </p>
+                
                 <div class="mt-12">
-                    <a href="https://invilawatertreatment-blip.github.io/akumulasi-kapasitas-terpasang-dan-Logo-klien/" target="_blank" class="text-[10px] font-black uppercase tracking-[0.3em] border-b-2 border-black pb-2 text-black hover:text-royalBlue hover:border-royalBlue transition-all">
-                        View Audited Capacity Portfolio →
+                    <a href="https://invilawatertreatment-blip.github.io/akumulasi-kapasitas-terpasang-dan-Logo-klien/" target="_blank" class="inline-block bg-royalBlue text-white px-10 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-royalBlue/30 hover:scale-105 hover:bg-blue-700 transition-all">
+                        Lihat Portofolio
                     </a>
                 </div>
             </div>
@@ -109,20 +114,24 @@
             window.requestAnimationFrame(step);
         }
 
+        // Transisi saat video selesai
         heroVideo.onended = function() {
             heroVideo.style.transition = "opacity 1s ease";
             heroVideo.style.opacity = "0";
             
             setTimeout(() => {
                 heroVideo.classList.add('hidden-element');
+                
+                // Munculkan Foto Industri (air.jpg)
                 heroImage.classList.remove('hidden');
                 heroImage.classList.add('fade-in');
                 setTimeout(() => heroImage.classList.add('visible'), 50);
 
+                // Munculkan Konten & Animasi
                 contentOverlay.classList.remove('hidden');
                 setTimeout(() => {
                     contentOverlay.style.opacity = "1";
-                    // REVISI: Mulai dari 79.150.000 ke 79.154.776 (Hanya gerak sedikit agar elegan)
+                    // Animasi elegan dari 79.150.000 ke 79.154.776
                     animateValue(79150000, 79154776, 2000);
                 }, 500);
             }, 1000);
