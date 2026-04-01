@@ -13,7 +13,11 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { royalBlue: '#2563eb', ink: '#05070a', surface: '#f8fafc' }
+                    colors: { 
+                        royalBlue: '#2563eb', 
+                        ink: '#05070a',
+                        surface: '#f8fafc' 
+                    }
                 }
             }
         }
@@ -27,59 +31,29 @@
         #contentOverlay { transition: opacity 1s ease-in-out; }
         .noto-serif { font-family: 'Noto Serif', serif; }
         
-        /* ----------------------------------------------------------- */
-        /* MCKINSEY SEAMLESS SCROLLER CSS */
-        /* ----------------------------------------------------------- */
-        
-        /* 1. Container Utama Scroller */
+        /* MCKINSEY SEAMLESS SCROLLER ANIMATION */
         .scroller {
             max-width: 100%;
-            overflow: hidden; /* Sembunyikan overflow agar bergerak rapi */
-            mask-image: linear-gradient(
-                to right,
-                hsl(0 0% 0% / 0),
-                hsl(0 0% 0% / 1) 15%,
-                hsl(0 0% 0% / 1) 85%,
-                hsl(0 0% 0% / 0)
-            ); /* Efek memudar di pinggir (McKinsey subtle touch) */
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
-
-        /* 2. Track Internal yang Bergerak */
         .scroller__inner {
             display: flex;
-            width: max-content; /* Pastikan track selebar jumlah logo */
+            width: max-content;
             flex-wrap: nowrap;
-            gap: 5rem; /* Jarak antar logo (rega & profesional) */
-            animation: scroll 40s linear infinite; /* Gerakan linear konstan (Seamless) */
+            gap: 5rem;
+            animation: scroll 40s linear infinite;
         }
-
-        /* Jeda gerakan saat mouse hover (opsional untuk keterbacaan) */
-        .scroller:hover .scroller__inner {
-            animation-play-state: paused;
-        }
-
-        /* 3. Gaya Logo McKinsey (Subtle) saat Bergerak */
+        .scroller:hover .scroller__inner { animation-play-state: paused; }
         .client-logo-scroll {
             filter: grayscale(100%);
-            opacity: 0.4; /* Lebih subtle daripada opasitas 0.5 */
+            opacity: 0.4;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            flex-shrink: 0; /* Pastikan logo tidak gepeng */
-            object-contain;
+            flex-shrink: 0;
+            object-fit: contain;
         }
-
-        /* 4. Efek Hover Seamless saat Jeda */
-        .client-logo-scroll:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.05); /* Sedikit membesar */
-        }
-
-        /* 5. Keyframes Gerakan Seamless (Move 50% lalu snap back) */
-        @keyframes scroll {
-            to {
-                transform: translateX(-50%);
-            }
-        }
+        .client-logo-scroll:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.05); }
+        @keyframes scroll { to { transform: translateX(-50%); } }
     </style>
 </head>
 <body class="antialiased text-black">
@@ -163,34 +137,29 @@
     <section class="bg-surface py-20 md:py-32 border-t border-black/5 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 mb-16 md:mb-24 text-left">
             <h4 class="text-royalBlue font-black tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4">Strategic Partners</h4>
-            <h2 class="text-2xl md:text-5xl font-black text-black noto-serif leading-tight">
-                Trusted by National Leaders & <br class="hidden md:block"> Industrial Giants.
-                </h2>
+            <h2 class="text-2xl md:text-5xl font-black text-black noto-serif leading-tight">Trusted by National Leaders & <br class="hidden md:block"> Industrial Giants.</h2>
         </div>
 
         <div class="scroller">
             <div class="scroller__inner">
-                
-                <img src="asasta%20legong.png" alt="Asasta Legong" class="client-logo-scroll h-8 md:h-14">
-                <img src="dinkes%20depok.png" alt="Dinkes Depok" class="client-logo-scroll h-8 md:h-14">
+                <img src="asasta%20legong.png" alt="Asasta" class="client-logo-scroll h-8 md:h-14">
+                <img src="dinkes%20depok.png" alt="Dinkes" class="client-logo-scroll h-8 md:h-14">
                 <img src="kievit.png" alt="Kievit" class="client-logo-scroll h-8 md:h-14">
                 <img src="kiw.png" alt="KIW" class="client-logo-scroll h-8 md:h-14">
-                <img src="patria-maritim-perkasa.png" alt="Patria Maritim Perkasa" class="client-logo-scroll h-8 md:h-14">
-                <img src="petrokimia-gresik.png" alt="Petrokimia Gresik" class="client-logo-scroll h-8 md:h-14">
+                <img src="patria-maritim-perkasa.png" alt="Patria" class="client-logo-scroll h-8 md:h-14">
+                <img src="petrokimia-gresik.png" alt="Petrokimia" class="client-logo-scroll h-8 md:h-14">
                 <img src="tirtanadi.png" alt="Tirtanadi" class="client-logo-scroll h-8 md:h-14">
-                <img src="united-tractors.png" alt="United Tractors" class="client-logo-scroll h-8 md:h-14">
+                <img src="united-tractors.png" alt="UT" class="client-logo-scroll h-8 md:h-14">
                 <img src="wika.png" alt="Wika" class="client-logo-scroll h-8 md:h-14">
-
-                <img src="asasta%20legong.png" alt="Asasta Legong" class="client-logo-scroll h-8 md:h-14">
-                <img src="dinkes%20depok.png" alt="Dinkes Depok" class="client-logo-scroll h-8 md:h-14">
+                <img src="asasta%20legong.png" alt="Asasta" class="client-logo-scroll h-8 md:h-14">
+                <img src="dinkes%20depok.png" alt="Dinkes" class="client-logo-scroll h-8 md:h-14">
                 <img src="kievit.png" alt="Kievit" class="client-logo-scroll h-8 md:h-14">
                 <img src="kiw.png" alt="KIW" class="client-logo-scroll h-8 md:h-14">
-                <img src="patria-maritim-perkasa.png" alt="Patria Maritim Perkasa" class="client-logo-scroll h-8 md:h-14">
-                <img src="petrokimia-gresik.png" alt="Petrokimia Gresik" class="client-logo-scroll h-8 md:h-14">
+                <img src="patria-maritim-perkasa.png" alt="Patria" class="client-logo-scroll h-8 md:h-14">
+                <img src="petrokimia-gresik.png" alt="Petrokimia" class="client-logo-scroll h-8 md:h-14">
                 <img src="tirtanadi.png" alt="Tirtanadi" class="client-logo-scroll h-8 md:h-14">
-                <img src="united-tractors.png" alt="United Tractors" class="client-logo-scroll h-8 md:h-14">
+                <img src="united-tractors.png" alt="UT" class="client-logo-scroll h-8 md:h-14">
                 <img src="wika.png" alt="Wika" class="client-logo-scroll h-8 md:h-14">
-                
             </div>
         </div>
     </section>
