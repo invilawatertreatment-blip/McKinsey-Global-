@@ -3,144 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invila™ | Industrial Water Infrastructure</title>
+    <title>Invila™ | Sovereign Industrial Water Infrastructure</title>
     
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { royalBlue: '#2563eb', ink: '#05070a' }
+                    colors: {
+                        ink: '#05070a',
+                        royalBlue: '#2563eb',
+                        surface: '#f8fafc',
+                    }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        #odometer { font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-        .hidden-element { display: none !important; }
+        body { background-color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100dvh; }
         
-        /* Background Gambar Mobile Friendly */
-        .bg-hero {
+        /* Angka stabil & tabular agar tidak goyang saat berputar */
+        #odometer { 
+            font-variant-numeric: tabular-nums; 
+            letter-spacing: -0.02em;
+        }
+
+        .fade-in { opacity: 0; transition: opacity 1s ease-in-out; }
+        .fade-in.visible { opacity: 1; }
+        .hidden-element { display: none !important; }
+
+        /* Latar belakang air.jpg yang Fixed di PC, Scroll di HP agar ringan */
+        .bg-fixed-air {
             background-image: url('air.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: scroll;
         }
-        @media (min-width: 1024px) { .bg-hero { background-attachment: fixed; } }
+        @media (min-width: 1024px) {
+            .bg-fixed-air { background-attachment: fixed; }
+        }
+
+        #contentOverlay { transition: opacity 1s ease-in-out; }
     </style>
 </head>
-<body class="antialiased text-black">
+<body class="antialiased">
 
     <nav class="fixed top-0 w-full z-[100] backdrop-blur-md border-b border-black/5 bg-white/80">
-        <div class="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
-            <img src="logo-invila-white.png" alt="Invila" class="h-6 md:h-7 brightness-0"> 
-            <a href="https://wa.me/622188866168" class="bg-royalBlue text-white px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 h-16 md:h-24 flex items-center justify-between">
+            <img src="logo-invila-white.png" alt="Invila" class="h-6 md:h-8 brightness-0"> 
+            <a href="https://wa.me/622188866168" class="bg-royalBlue text-white px-6 md:px-10 py-2 md:py-3 rounded-full text-[10px] md:text-sm font-black uppercase tracking-widest shadow-md hover:scale-105 active:scale-95 transition-all">
                 Site Audit
             </a>
         </div>
     </nav>
 
-    <section class="relative min-h-[100dvh] w-full flex flex-col justify-center items-center pt-24 pb-12 px-6">
+    <section class="relative min-h-[100dvh] w-full flex flex-col justify-center items-center overflow-hidden bg-white pt-24 md:pt-32 pb-16">
         
-        <video id="heroVideo" muted playsinline class="absolute inset-0 z-50 w-full h-full object-cover">
+        <video id="heroVideo" muted playsinline class="absolute z-50 w-full h-full object-cover">
             <source src="landingpage_front_optimized.mp4" type="video/mp4">
         </video>
 
-        <div id="heroImage" class="absolute inset-0 z-10 hidden bg-hero opacity-20"></div>
+        <div id="heroImage" class="absolute inset-0 z-10 hidden bg-fixed-air">
+            <div class="absolute inset-0 bg-white/30"></div>
+        </div>
 
-        <div id="contentOverlay" class="relative z-40 text-center w-full max-w-6xl hidden opacity-0 transition-opacity duration-700">
+        <div id="contentOverlay" class="relative z-40 text-center px-6 w-full max-w-6xl hidden opacity-0">
             
-            <p class="text-royalBlue font-black tracking-[0.3em] uppercase text-[9px] md:text-xs mb-4">
-                Verified Performance
-            </p>
+            <h2 class="text-black font-black tracking-[0.3em] uppercase text-[10px] md:text-lg mb-6 md:mb-10 opacity-70">
+                Verified Industrial Performance.
+            </h2>
             
-            <div class="mb-8 md:mb-12">
-                <span id="odometer" class="text-5xl md:text-[10rem] font-black leading-none text-black">79.150.000</span>
-                <span class="text-2xl md:text-6xl font-light text-royalBlue ml-1">m³</span>
+            <div class="mb-10 md:mb-14">
+                <span id="odometer" class="text-5xl sm:text-7xl lg:text-[10rem] font-black text-royalBlue leading-none">79.150.000</span>
+                <span class="text-2xl lg:text-7xl font-light text-royalBlue ml-1 md:ml-2 italic font-serif">m³</span>
             </div>
 
-            <div class="max-w-3xl mx-auto mb-16">
-                <p class="text-lg md:text-3xl font-light leading-snug text-black/90">
-                    Bukan sekadar volume, ini adalah <strong class="font-black border-b-4 border-royalBlue">akumulasi risiko yang kami mitigasi</strong> selama dua dekade operasional.
+            <div class="max-w-xs sm:max-w-3xl lg:max-w-5xl mx-auto">
+                <p class="text-lg md:text-4xl font-light leading-snug text-black mb-16 md:mb-24">
+                    Bukan sekadar volume, ini adalah <strong class="font-black underline decoration-royalBlue decoration-2 md:decoration-4">akumulasi risiko yang berhasil kami mitigasi</strong> selama dua dekade operasional.
                 </p>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left border-t border-black/10 pt-10">
-                <div class="space-y-2">
-                    <h4 class="font-black text-royalBlue uppercase text-xs tracking-widest">Financial</h4>
-                    <p class="text-sm md:text-base text-black/70">
-                        <strong class="text-black">Zero Capex.</strong> Bebaskan arus kas Anda. Efisiensi air 100% Off-Balance Sheet.
-                    </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-left border-t border-black/10 pt-12 mb-20 md:mb-32">
+                    <div class="space-y-3">
+                        <h4 class="font-black text-royalBlue uppercase text-xs md:text-xl tracking-widest">Financial</h4>
+                        <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
+                            <strong class="text-black">Zero Capex Model.</strong> Mengalihkan beban investasi menjadi efisiensi operasional murni. 100% Off-Balance Sheet.
+                        </p>
+                    </div>
+                    <div class="space-y-3 md:border-l-2 md:border-black/5 md:pl-10">
+                        <h4 class="font-black text-royalBlue uppercase text-xs md:text-xl tracking-widest">Operational</h4>
+                        <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
+                            <strong class="text-black">99.98% Uptime.</strong> Dua dekade mengamankan kontinuitas air untuk publik, manufaktur, dan kawasan industri.
+                        </p>
+                    </div>
+                    <div class="space-y-3 md:border-l-2 md:border-black/5 md:pl-10">
+                        <h4 class="font-black text-royalBlue uppercase text-xs md:text-xl tracking-widest">Compliance</h4>
+                        <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
+                            <strong class="text-black">Risk Transfer.</strong> Kami mengambil alih seluruh risiko regulasi. Zero friction dengan standar lingkungan nasional.
+                        </p>
+                    </div>
                 </div>
-                <div class="space-y-2 md:border-l md:border-black/10 md:pl-8">
-                    <h4 class="font-black text-royalBlue uppercase text-xs tracking-widest">Operational</h4>
-                    <p class="text-sm md:text-base text-black/70">
-                        <strong class="text-black">99.98% Uptime.</strong> Jaminan kontinuitas air untuk publik dan kawasan industri.
-                    </p>
-                </div>
-                <div class="space-y-2 md:border-l md:border-black/10 md:pl-8">
-                    <h4 class="font-black text-royalBlue uppercase text-xs tracking-widest">Compliance</h4>
-                    <p class="text-sm md:text-base text-black/70">
-                        <strong class="text-black">Risk Transfer.</strong> Kami mengambil alih seluruh risiko regulasi lingkungan nasional.
-                    </p>
+
+                <div class="border-t-4 border-black pt-12 text-left">
+                    <div class="max-w-4xl">
+                        <h3 class="text-2xl md:text-6xl font-black tracking-tight text-black leading-[1.1] mb-8">
+                            Protecting your <span class="text-royalBlue">EBITDA</span> is not our goal; it's our standard.
+                        </h3>
+                        <p class="text-base md:text-2xl text-black/60 font-light max-w-2xl leading-relaxed">
+                            Di Invila™, kami tidak hanya mengolah air. Kami mengamankan struktur finansial yang memungkinkan bisnis Anda tumbuh tanpa hambatan infrastruktur.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
         const heroVideo = document.getElementById('heroVideo');
         const heroImage = document.getElementById('heroImage');
         const contentOverlay = document.getElementById('contentOverlay');
         const odometer = document.getElementById('odometer');
 
-        function animateOdo(start, end, duration) {
+        function animateValue(start, end, duration) {
             let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                odometer.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString('id-ID');
+                const value = Math.floor(progress * (end - start) + start);
+                odometer.innerHTML = value.toLocaleString('id-ID');
                 if (progress < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
         }
 
-        function reveal(isInstant = false) {
+        function showMainContent(isInstant = false) {
             if (!contentOverlay.classList.contains('hidden')) return;
+
             if (isInstant) {
+                // Bypass Video
                 heroVideo.classList.add('hidden-element');
                 heroImage.classList.remove('hidden');
+                heroImage.classList.add('visible');
                 contentOverlay.classList.remove('hidden');
                 contentOverlay.style.opacity = "1";
-                animateOdo(79150000, 79154776, 500);
+                animateValue(79150000, 79154776, 500); 
             } else {
+                // Transisi dari Video
+                heroVideo.style.transition = "opacity 0.8s ease";
                 heroVideo.style.opacity = "0";
                 setTimeout(() => {
                     heroVideo.classList.add('hidden-element');
                     heroImage.classList.remove('hidden');
+                    heroImage.classList.add('fade-in');
+                    setTimeout(() => heroImage.classList.add('visible'), 50);
                     contentOverlay.classList.remove('hidden');
                     setTimeout(() => {
                         contentOverlay.style.opacity = "1";
-                        animateOdo(79150000, 79154776, 2000);
-                    }, 100);
-                }, 500);
+                        animateValue(79150000, 79154776, 2000);
+                    }, 300);
+                }, 800);
             }
-            sessionStorage.setItem('vWatched', 'true');
+            sessionStorage.setItem('videoWatched', 'true');
         }
 
-        window.onload = () => {
-            const watched = sessionStorage.getItem('vWatched') || new URLSearchParams(window.location.search).get('skipvideo');
-            if (watched === 'true') {
-                reveal(true);
-            } else {
-                heroVideo.play().catch(() => reveal(true));
-                heroVideo.onended = () => reveal(false);
-                setTimeout(() => reveal(true), 5000); // Failsafe
-            }
-        };
-    </script>
+        // REDIRECT & SESSION PROTECTION
+        const urlParams = new URLSearchParams(window.location.search);
+        const skipVideo = urlParams.get('skipvideo');
+        const hasWatched = sessionStorage.getItem('videoWatched');
+
+        if (skipVideo === 'true' || hasWatched === 'true') {
+            showMainContent(true);
+        } else {
+            heroVideo.play().catch(() => showMainContent(false));
+            heroVideo.onended = () => showMainContent(false);
+            
+            // Failsafe (Anti-stuck)
+            setTimeout(() => {
+                if (contentOverlay.classList.contains('hidden')) showMainContent(false);
+            }, 6000);
+        }
+    });
+</script>
 </body>
 </html>
