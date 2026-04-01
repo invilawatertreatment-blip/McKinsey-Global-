@@ -38,6 +38,9 @@
         @media (min-width: 1024px) {
             .bg-fixed-air { background-attachment: fixed; }
         }
+
+        /* Anti-Flicker: Sembunyikan konten secara default agar tidak kaget saat load */
+        #contentOverlay { transition: opacity 1s ease-in-out; }
     </style>
 </head>
 <body class="antialiased">
@@ -53,7 +56,7 @@
 
     <section class="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-white pt-20 md:pt-24 pb-12">
         
-        <video id="heroVideo" autoplay muted playsinline class="absolute z-50 w-full h-full object-cover">
+        <video id="heroVideo" muted playsinline class="absolute z-50 w-full h-full object-cover">
             <source src="landingpage_front_optimized.mp4" type="video/mp4">
         </video>
 
@@ -61,7 +64,7 @@
             <div class="absolute inset-0 bg-white/20"></div>
         </div>
 
-        <div id="contentOverlay" class="relative z-40 text-center px-4 md:px-6 hidden opacity-0 transition-opacity duration-1000">
+        <div id="contentOverlay" class="relative z-40 text-center px-4 md:px-6 hidden opacity-0">
             
             <h2 class="text-black font-black tracking-[0.3em] uppercase text-[10px] md:text-lg mb-4 md:mb-8 opacity-80">
                 Verified Industrial Performance.
@@ -82,28 +85,24 @@
                 </a>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 text-left border-t-2 md:border-t-4 border-black pt-8 md:pt-12">
-                    
                     <div class="space-y-2">
                         <h4 class="text-base md:text-xl font-black uppercase tracking-widest text-royalBlue">Financial Asset</h4>
                         <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
                             <strong class="text-black">Zero Capex Model.</strong> Mengalihkan beban investasi menjadi efisiensi operasional murni (OPEX). 100% Off-Balance Sheet.
                         </p>
                     </div>
-
                     <div class="space-y-2 border-l-0 md:border-l-2 border-black/10 md:pl-8">
                         <h4 class="text-base md:text-xl font-black uppercase tracking-widest text-royalBlue">Operational Stability</h4>
                         <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
                             <strong class="text-black">99.98% Uptime.</strong> Dua dekade mengamankan kontinuitas air untuk <span class="text-black font-bold">publik, industri manufaktur dan kawasan industri.</span>
                         </p>
                     </div>
-
                     <div class="space-y-2 border-l-0 md:border-l-2 border-black/10 md:pl-8">
                         <h4 class="text-base md:text-xl font-black uppercase tracking-widest text-royalBlue">Compliance Safety</h4>
                         <p class="text-sm md:text-lg leading-relaxed text-black/80 font-medium">
                             <strong class="text-black">Risk Transfer.</strong> Kami mengambil alih tanggung jawab regulasi. Zero friction dengan standar lingkungan nasional.
                         </p>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -129,20 +128,20 @@
         window.requestAnimationFrame(step);
     }
 
-    // FUNGSI UNTUK MENAMPILKAN KONTEN UTAMA
     function showMainContent(isInstant = false) {
         if (!contentOverlay.classList.contains('hidden')) return;
 
         if (isInstant) {
-            // Jika instan (kembali dari redirect), langsung muncul tanpa animasi video
+            // MODE INSTAN: Video tidak pernah disentuh/dimuat
             heroVideo.classList.add('hidden-element');
             heroImage.classList.remove('hidden');
+            heroImage.style.opacity = "1";
             heroImage.classList.add('visible');
             contentOverlay.classList.remove('hidden');
             contentOverlay.style.opacity = "1";
-            animateValue(79150000, 79154776, 500); // Odometer lebih cepat karena sudah pernah lihat
+            animateValue(79150000, 79154776, 500); 
         } else {
-            // Animasi normal setelah video selesai
+            // MODE NORMAL: Transisi dari Video
             heroVideo.style.transition = "opacity 0.8s ease";
             heroVideo.style.opacity = "0";
             setTimeout(() => {
@@ -157,22 +156,30 @@
                 }, 300);
             }, 800);
         }
-        // Simpan status bahwa user sudah menonton video di sesi ini
         sessionStorage.setItem('videoWatched', 'true');
     }
 
-    // CEK STATUS SAAT HALAMAN DIBUKA
-    window.addEventListener('DOMContentLoaded', () => {
-        if (sessionStorage.getItem('videoWatched') === 'true') {
-            showMainContent(true); // Langsung tampilkan konten
+    // LOGIKA STARTUP
+    window.addEventListener('load', () => {
+        const hasWatched = sessionStorage.getItem('videoWatched');
+
+        if (hasWatched === 'true') {
+            showMainContent(true);
         } else {
-            // Jalankan alur normal (tunggu video selesai)
-            heroVideo.onended = () => showMainContent(false);
-            
-            // Failsafe 4 detik jika video error
-            setTimeout(() => {
+            // Jika baru pertama kali, play video secara manual
+            heroVideo.play().catch(error => {
+                console.log("Autoplay blocked, showing content.");
                 showMainContent(false);
-            }, 4000);
+            });
+            
+            heroVideo.onended = () => showMainContent(false);
+
+            // Failsafe jika video macet
+            setTimeout(() => {
+                if (contentOverlay.classList.contains('hidden')) {
+                    showMainContent(false);
+                }
+            }, 5000);
         }
     });
 </script>
