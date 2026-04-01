@@ -109,28 +109,40 @@
         </div>
     </section>
 
-    <script>
-        const heroVideo = document.getElementById('heroVideo');
-        const heroImage = document.getElementById('heroImage');
-        const contentOverlay = document.getElementById('contentOverlay');
-        const odometer = document.getElementById('odometer');
+<script>
+    const heroVideo = document.getElementById('heroVideo');
+    const heroImage = document.getElementById('heroImage');
+    const contentOverlay = document.getElementById('contentOverlay');
+    const odometer = document.getElementById('odometer');
 
-        function animateValue(start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const value = Math.floor(progress * (end - start) + start);
-                odometer.innerHTML = value.toLocaleString('id-ID');
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
+    function animateValue(start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const value = Math.floor(progress * (end - start) + start);
+            odometer.innerHTML = value.toLocaleString('id-ID');
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
 
-        function triggerTransition() {
-            if (!contentOverlay.classList.contains('hidden')) return;
+    // FUNGSI UNTUK MENAMPILKAN KONTEN UTAMA
+    function showMainContent(isInstant = false) {
+        if (!contentOverlay.classList.contains('hidden')) return;
+
+        if (isInstant) {
+            // Jika instan (kembali dari redirect), langsung muncul tanpa animasi video
+            heroVideo.classList.add('hidden-element');
+            heroImage.classList.remove('hidden');
+            heroImage.classList.add('visible');
+            contentOverlay.classList.remove('hidden');
+            contentOverlay.style.opacity = "1";
+            animateValue(79150000, 79154776, 500); // Odometer lebih cepat karena sudah pernah lihat
+        } else {
+            // Animasi normal setelah video selesai
             heroVideo.style.transition = "opacity 0.8s ease";
             heroVideo.style.opacity = "0";
             setTimeout(() => {
@@ -145,9 +157,24 @@
                 }, 300);
             }, 800);
         }
+        // Simpan status bahwa user sudah menonton video di sesi ini
+        sessionStorage.setItem('videoWatched', 'true');
+    }
 
-        heroVideo.onended = triggerTransition;
-        setTimeout(triggerTransition, 4000);
-    </script>
+    // CEK STATUS SAAT HALAMAN DIBUKA
+    window.addEventListener('DOMContentLoaded', () => {
+        if (sessionStorage.getItem('videoWatched') === 'true') {
+            showMainContent(true); // Langsung tampilkan konten
+        } else {
+            // Jalankan alur normal (tunggu video selesai)
+            heroVideo.onended = () => showMainContent(false);
+            
+            // Failsafe 4 detik jika video error
+            setTimeout(() => {
+                showMainContent(false);
+            }, 4000);
+        }
+    });
+</script>
 </body>
 </html>
