@@ -319,11 +319,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="mt-20 md:mt-32 text-center border-t border-black/10 pt-16">
-                 <p class="text-xl md:text-3xl font-light text-black/80 leading-snug noto-serif mb-8">Keraguan Anda adalah bagian dari proses mitigasi risiko kami.<br><strong class="font-black text-black">Uji ketahanan argumen kami di meja rapat Anda.</strong></p>
-                 <a href="#exclusivity-clause" class="inline-flex items-center gap-4 bg-ink text-white px-8 md:px-12 py-4 md:py-5 rounded-full text-[10px] md:text-sm font-black uppercase tracking-[0.2em] shadow-2xl hover:bg-royalBlue hover:scale-105 active:scale-95 transition-all">Jadwalkan Eksekusi Audit →</a>
+
             </div>
         </div>
     </section>
@@ -364,7 +360,7 @@
                 </div>
 
                 <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6">
-                    <a href="https://wa.me/6285219493322?text=Selamat%20%5Bpagi%2Fsiang%5D%2C%20Pak%20Irfon%20(Strategic%20Room).%0A%0AMenindaklanjuti%20informasi%20keterbatasan%20kuota%20eksekusi%20Invila%E2%84%A2%20kuartal%20ini%2C%20saya%20bermaksud%20mengamankan%20slot%20prioritas%20*Strategic%20Site%20Audit*%20untuk%20fasilitas%20kami%20terkait%20transisi%20model%20*Zero-CapEx*%20(WaaS).%0A%0ASebagai%20*baseline*%20kualifikasi%2C%20berikut%20data%20kami%3A%0A-%20Nama%3A%20%0A-%20Jabatan%3A%20(CEO%20%2F%20BOD%20%2F%20Plant%20Manager)%0A-%20Perusahaan%3A%20PT.%20%0A-%20Estimasi%20Debit%20(m%C2%B3%2Fhari)%3A%20%0A%0AMohon%20arahannya%20terkait%20prosedur%20penerbitan%20LOI%20(Letter%20of%20Intent)%20dan%20ketersediaan%20waktu%20tim%20*Engineering*%20Bapak%20untuk%20visit%20ke%20lokasi%20kami.%20Terima%20kasih." target="_blank" class="w-full sm:w-auto bg-invilaGold text-deepInk px-10 py-5 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(197,160,89,0.4)] hover:bg-white hover:scale-105 active:scale-95 transition-all text-center">
+                    <a href="https://wa.me/6285219493322" class="w-full sm:w-auto bg-invilaGold text-deepInk px-10 py-5 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(197,160,89,0.4)] hover:bg-white hover:scale-105 active:scale-95 transition-all text-center">
                         Kunci Kuota Audit Anda →
                     </a>
                 </div>
@@ -701,7 +697,7 @@
         // --- MERGED WINDOW ONLOAD ---
         window.onload = () => {
             // Jalankan logika video hero LP
-            const watched = sessionStorage.getItem('vWatched') || newSearchParams(window.location.search).get('skipvideo');
+            const watched = sessionStorage.getItem('vWatched') || new URLSearchParams(window.location.search).get('skipvideo');
             if (watched === 'true') { reveal(true); } 
             else {
                 const playPromise = heroVideo.play();
@@ -711,22 +707,6 @@
             }
             // Jalankan inisialisasi kalkulator
             updateCalculations();
-            
-            // Perbaiki tautan (smooth scroll) untuk tombol "Jadwalkan Eksekusi Audit" di Transparency section
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId.startsWith('#')) {
-                        e.preventDefault();
-                        const targetElement = document.querySelector(targetId);
-                        if(targetElement) {
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
         };
     </script>
 </body>
