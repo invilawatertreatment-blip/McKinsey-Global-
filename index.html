@@ -29,7 +29,6 @@
     </script>
 
     <style>
-        /* Base Styles for Landing Page */
         body { background-color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100dvh; scroll-behavior: smooth; }
         #odometer { font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
         .hidden-element { display: none !important; }
@@ -38,7 +37,6 @@
         #contentOverlay { transition: opacity 1s ease-in-out; }
         .noto-serif { font-family: 'Noto Serif', serif; }
         
-        /* Scroller Styles */
         .scroller { max-width: 100%; overflow: hidden; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
         .scroller__inner { display: flex; width: max-content; flex-wrap: nowrap; gap: 5rem; animation: scroll 40s linear infinite; }
         .scroller:hover .scroller__inner { animation-play-state: paused; }
@@ -46,7 +44,6 @@
         .client-logo-scroll:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.05); }
         @keyframes scroll { to { transform: translateX(-50%); } }
 
-        /* PDF Engine Constraints */
         input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         .pdf-stage { position: absolute; left: -9999px; top: 0; z-index: -50; opacity: 0; pointer-events: none; }
         .pdf-page { width: 210mm; height: 297mm; padding: 20mm; background: white; color: #00205B; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
@@ -324,10 +321,53 @@
                 </div>
 
             </div>
+        </div>
+    </section>
+
+    <section id="exclusivity-clause" class="bg-deepInk py-20 md:py-32 px-6 border-t-4 border-invilaGold relative overflow-hidden">
+        
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-invilaGold/10 blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="border border-white/10 bg-white/5 backdrop-blur-sm p-8 md:p-16 rounded-3xl text-center shadow-2xl">
+                
+                <div class="inline-flex items-center gap-3 bg-legacyRed/20 border border-legacyRed/50 text-white px-4 py-2 rounded-full mb-8">
+                    <span class="w-2 h-2 rounded-full bg-legacyRed animate-pulse"></span>
+                    <span class="text-[10px] md:text-xs font-black uppercase tracking-widest text-legacyRed/90">Kapasitas Eksekusi Terbatas</span>
+                </div>
+
+                <h2 class="text-3xl md:text-5xl font-black text-white noto-serif leading-[1.1] tracking-tight mb-8">
+                    Hanya <span class="text-invilaGold">2 (Dua) Proyek</span> Skala Penuh Kuartal Ini.
+                </h2>
+                
+                <div class="text-base md:text-xl text-white/70 font-light leading-relaxed space-y-6 text-justify md:text-center">
+                    <p>
+                        Kami bukan vendor penyedia mesin massal. Model bisnis 100% <strong class="text-white font-bold italic">Zero-CapEx</strong> berarti <strong class="border-b border-invilaGold text-white">kami menanggung miliaran Rupiah di depan</strong> untuk memitigasi risiko pabrik Anda.
+                    </p>
+                    <p>
+                        Demi menjaga standar kualitas <i class="text-white/50">Zero-Downtime</i> dan fokus <i class="text-white/50">Engineering</i> yang absolut, sumber daya operasional dan pendanaan kami saat ini <strong class="text-white font-black">dikunci secara eksklusif hanya untuk mengeksekusi 2 (dua) proyek WaaS secara bersamaan.</strong>
+                    </p>
+                </div>
+
+                <div class="bg-surfaceNavy p-6 md:p-8 rounded-2xl border border-slate-700 mt-10 text-left">
+                    <h3 class="text-invilaGold font-black uppercase tracking-[0.2em] text-[10px] md:text-xs mb-4">Mekanisme Alokasi Prioritas (The LOI Gate)</h3>
+                    <p class="text-sm md:text-base text-white/80 font-light leading-relaxed">
+                        Kami tidak merespon antrean standar. Kemitraan strategis ini diprioritaskan ketat berdasarkan penerimaan <strong class="text-white font-bold uppercase">Letter of Intent (LOI)</strong> resmi dari manajemen Anda pasca-audit. 
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-white/10 text-center">
+                        <p class="text-base md:text-lg text-white font-black noto-serif italic">"Amankan kuota audit Anda hari ini, atau saksikan kompetitor Anda menikmati efisiensi EBITDA ini."</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6">
+                    <a href="https://wa.me/6285219493322" class="w-full sm:w-auto bg-invilaGold text-deepInk px-10 py-5 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(197,160,89,0.4)] hover:bg-white hover:scale-105 active:scale-95 transition-all text-center">
+                        Kunci Kuota Audit Anda →
+                    </a>
+                </div>
+            </div>
             
-            <div class="mt-20 md:mt-32 text-center border-t border-black/10 pt-16">
-                 <p class="text-xl md:text-3xl font-light text-black/80 leading-snug noto-serif mb-8">Keraguan Anda adalah bagian dari proses mitigasi risiko kami.<br><strong class="font-black text-black">Uji ketahanan argumen kami di meja rapat Anda.</strong></p>
-                 <a href="https://wa.me/6285219493322" class="inline-flex items-center gap-4 bg-ink text-white px-8 md:px-12 py-4 md:py-5 rounded-full text-[10px] md:text-sm font-black uppercase tracking-[0.2em] shadow-2xl hover:bg-royalBlue hover:scale-105 active:scale-95 transition-all">Jadwalkan Eksekusi Audit →</a>
+            <div class="mt-12 text-center">
+                <p class="text-[9px] font-bold text-white/30 uppercase tracking-[0.3em]">Invila™ Strategic Room | strictly confidential</p>
             </div>
         </div>
     </section>
