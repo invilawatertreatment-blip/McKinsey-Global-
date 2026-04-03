@@ -118,12 +118,22 @@
                 document.getElementById('main-headline').innerHTML = `EBITDA Protection & <br><span class="text-blue-500">Capital Efficiency</span> di ${comp}`;
                 document.getElementById('sub-headline').innerText = "Model Zero-CapEx kami mengeliminasi biaya investasi berat dan meningkatkan laba bersih secara instan.";
                 document.getElementById('btn-report-type').innerText = "Financial Report";
-            } else {
-                document.getElementById('main-headline').innerHTML = `99.98% Water Stability & <br><span class="text-blue-500">Zero-Downtime System</span> di ${comp}`;
-                document.getElementById('sub-headline').innerText = `Sistem SCADA-IoT kami bekerja otomatis tanpa mengganggu jadwal produksi Anda di ${comp}.`;
+          } else {
+                // PESAN STRATEGIS UNTUK FM
+                document.getElementById('main-headline').innerHTML = `Take Control of Your <br><span class="text-blue-500">Industrial Water</span>`;
+                
+                document.getElementById('sub-headline').innerHTML = `
+                    <span class="block mb-2 font-bold text-white">99.98% Water Stability & Zero-Downtime System.</span>
+                    Dirancang untuk memberikan kontrol penuh atas kontinuitas produksi di ${comp} secara autopilot.
+                `;
+                
                 document.getElementById('btn-report-type').innerText = "Hero Report (Technical)";
-                document.getElementById('wa-text').innerText = "Technical Site Audit";
+                document.getElementById('wa-text').innerText = "Request Technical Audit";
+                
                 if(videoWrapper) videoWrapper.classList.remove('hidden');
+                if (player) {
+                    player.play().catch(e => console.log("Info: Browser menahan Autoplay."));
+                }
             }
 
             const pesanWA = `Halo Pak Piator, saya ${name} (${role}) dari ${comp}. Saya meninjau Dashboard Invila™ dan ingin diskusi teknis lebih lanjut.`;
