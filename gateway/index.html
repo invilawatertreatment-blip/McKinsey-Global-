@@ -20,10 +20,10 @@
     <div class="war-room-bg flex flex-col">
         <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 py-4 flex justify-between items-center sticky top-0 z-50 shadow-lg">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-black text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]">I</div>
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-black text-white shadow-[0_0_15px_rgba(37,99,235,0.5)] text-glow">I</div>
                 <span class="text-xl font-black tracking-tighter text-white uppercase">INVILA<span class="text-blue-500">™</span></span>
             </div>
-            <div class="hidden md:block text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase">Secure Strategic Gateway v4.0</div>
+            <div class="hidden md:block text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase">Secure Strategic Gateway v4.5</div>
         </nav>
 
         <main class="flex-grow flex flex-col items-center px-6 py-12 md:py-20 z-20">
@@ -37,12 +37,8 @@
                         </span>
                         <span id="auth-status">Verifying Strategic Access...</span>
                     </div>
-                    <h1 id="main-headline" class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight text-glow">
-                        Strategic Water Infrastructure
-                    </h1>
-                    <p id="sub-headline" class="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">
-                        Mempersiapkan dashboard validasi teknis untuk unit industri Anda.
-                    </p>
+                    <h1 id="main-headline" class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight">Strategic Water Infrastructure</h1>
+                    <p id="sub-headline" class="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">Dashboard validasi untuk unit industri Anda.</p>
                 </div>
 
                 <div id="video-wrapper" class="hidden">
@@ -54,11 +50,10 @@
                     </div>
                 </div>
 
-                <div id="dynamic-dashboard" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                    </div>
+                <div id="dynamic-dashboard" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6"></div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-8">
-                    <button onclick="downloadReport()" class="group relative bg-blue-600 hover:bg-blue-500 text-white p-6 rounded-2xl font-black transition-all shadow-[0_15px_30px_-10px_rgba(37,99,235,0.5)] border border-blue-400/20 active:scale-95">
+                    <button onclick="downloadReport()" class="group bg-blue-600 hover:bg-blue-500 text-white p-6 rounded-2xl font-black transition-all shadow-[0_15px_30px_-10px_rgba(37,99,235,0.5)] active:scale-95 border border-blue-400/20">
                         <div class="flex items-center justify-center gap-3">
                             <svg class="w-7 h-7 text-blue-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             <span class="uppercase tracking-tighter text-xl">Download <span id="btn-report-type">Report</span></span>
@@ -72,31 +67,23 @@
 
                     <button id="btn-forward-cfo" onclick="forwardToCFO()" class="hidden glass-card hover:bg-blue-900/30 text-blue-400 p-6 rounded-2xl font-bold transition-all flex items-center justify-center gap-3 border-dashed border-blue-500/50 md:col-span-2">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
-                        <span>FORWARD STRATEGY TO CFO (EBITDA IMPACT)</span>
+                        <span>FORWARD SIMULASI EBITDA KE CFO</span>
                     </button>
                 </div>
 
                 <div class="glass-card p-8 rounded-3xl flex flex-col md:flex-row gap-8 items-center border border-slate-700 mt-10 shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl -z-10"></div>
                     <div class="relative z-10"><div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center text-4xl font-black text-white shadow-xl rotate-3 border-2 border-slate-800">PS</div><div class="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 border-4 border-slate-900 rounded-full shadow-lg"></div></div>
                     <div class="text-center md:text-left space-y-2 z-10">
                         <h3 class="text-2xl font-bold text-white tracking-tight">Piator Simbolon</h3>
-                        <p class="text-blue-400 font-bold text-xs tracking-[0.2em] uppercase leading-none">Senior Lead System Architect</p>
-                        <p class="text-slate-400 italic text-sm max-w-md leading-relaxed mt-3 border-l-2 border-blue-500/50 pl-4">"Kami membangun infrastruktur yang tidak hanya memproses air, tapi juga mengamankan stabilitas produksi dan efisiensi EBITDA Anda secara autopilot."</p>
+                        <p class="text-blue-400 font-bold text-xs tracking-[0.2em] uppercase">Senior Lead System Architect</p>
+                        <p class="text-slate-400 italic text-sm max-w-md leading-relaxed mt-3 border-l-2 border-blue-500/50 pl-4">"Kami mengamankan stabilitas produksi dan efisiensi EBITDA Anda secara autopilot."</p>
                     </div>
                 </div>
-
             </div>
         </main>
-
-        <footer class="p-8 text-center text-slate-600 text-[10px] font-bold tracking-[0.4em] uppercase border-t border-slate-900 mt-auto bg-slate-950/50">
-            © 2026 INVILA WATER INFRASTRUCTURE | SECURE INTERFACE
-        </footer>
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbx262a9v20JI0Ow_1kcfGRAd8W6GGNl7xqKlSb374BlIbuoghxmkcAenOVtUp6DuMnn/exec';
-
         window.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const name = params.get('name') || "Rekan";
@@ -104,18 +91,16 @@
             const comp = params.get('comp') || "Mitra Industri";
 
             document.getElementById('auth-status').innerText = `AUTHENTICATED: PAK ${name} (${role})`;
-            
+            for(let el of document.getElementsByClassName('comp-name')) { el.innerText = comp; }
+
             const dash = document.getElementById('dynamic-dashboard');
             const videoWrapper = document.getElementById('video-wrapper');
 
             if (role === 'CFO') {
-                // TAMPILAN KHUSUS CFO
                 document.getElementById('main-headline').innerHTML = `EBITDA Protection & <br><span class="text-blue-500">Capital Efficiency</span> at ${comp}`;
-                document.getElementById('sub-headline').innerHTML = `<span class="block mb-2 font-bold text-white">Off-Balance Sheet Infrastructure.</span> Model Zero-CapEx kami mengoptimalkan cash flow dan EBITDA secara instan.`;
+                document.getElementById('sub-headline').innerHTML = `<span class="block mb-2 font-bold text-white text-glow">Off-Balance Sheet Solution.</span> Memulihkan modal kerja dan EBITDA secara instan.`;
                 document.getElementById('btn-report-type').innerText = "Financial Impact Report";
                 document.getElementById('wa-text').innerText = "Request Financial Audit";
-                
-                // CFO Dashboard Widgets
                 dash.innerHTML = `
                     <div class="glass-card p-4 rounded-2xl text-center"><p class="text-[9px] font-bold text-slate-500 uppercase">CapEx Avoidance</p><p class="text-xl font-black text-emerald-400">Rp 0</p><p class="text-[8px] text-slate-500 mt-1 uppercase tracking-widest">Off-Balance Sheet</p></div>
                     <div class="glass-card p-4 rounded-2xl text-center"><p class="text-[9px] font-bold text-slate-500 uppercase">ROI Projection</p><p class="text-xl font-black text-blue-400 uppercase">INFINITE</p><p class="text-[8px] text-slate-500 mt-1 uppercase tracking-widest">Zero Investment</p></div>
@@ -123,16 +108,12 @@
                     <div class="glass-card p-4 rounded-2xl text-center"><p class="text-[9px] font-bold text-slate-500 uppercase">Liability Transfer</p><div class="flex justify-center gap-1 mt-2 items-center"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Active</span></div></div>
                 `;
             } else {
-                // TAMPILAN KHUSUS FM
                 document.getElementById('main-headline').innerHTML = `Take Control of Your <br><span class="text-blue-500">Industrial Water</span>`;
-                document.getElementById('sub-headline').innerHTML = `<span class="block mb-2 font-bold text-white">99.98% Water Stability & Zero-Downtime System.</span> Kontrol penuh atas kontinuitas produksi di ${comp} secara autopilot.`;
+                document.getElementById('sub-headline').innerHTML = `<span class="block mb-2 font-bold text-white">99.98% Water Stability & Zero-Downtime System.</span> Kontrol penuh kontinuitas produksi di ${comp}.`;
                 document.getElementById('btn-report-type').innerText = "Hero Report (Technical)";
-                document.getElementById('wa-text').innerText = "Request Technical Site Audit";
-                document.getElementById('btn-forward-cfo').classList.remove('hidden'); // Munculkan tombol forward
-                
+                document.getElementById('wa-text').innerText = "Request Technical Audit";
+                document.getElementById('btn-forward-cfo').classList.remove('hidden');
                 if(videoWrapper) videoWrapper.classList.remove('hidden');
-                
-                // FM SCADA Dashboard Widgets
                 dash.innerHTML = `
                     <div class="glass-card p-4 rounded-2xl text-center"><p class="text-[9px] font-bold text-slate-500 uppercase">Outlet Turbidity</p><p class="text-xl font-black text-emerald-400">&lt; 0.18 <span class="text-xs font-normal text-slate-400">NTU</span></p><div class="w-full bg-emerald-500/20 h-1 mt-2 rounded-full overflow-hidden"><div class="bg-emerald-500 h-full w-[90%] animate-pulse"></div></div></div>
                     <div class="glass-card p-4 rounded-2xl text-center"><p class="text-[9px] font-bold text-slate-500 uppercase">System Uptime</p><p class="text-xl font-black text-blue-400">99.98<span class="text-xs font-normal text-slate-400">%</span></p><div class="w-full bg-blue-500/20 h-1 mt-2 rounded-full overflow-hidden"><div class="bg-blue-500 h-full w-[99%]"></div></div></div>
@@ -141,19 +122,24 @@
                 `;
             }
 
-            const pesanWA = `Halo Pak Piator, saya ${name} (${role}) dari ${comp}. Saya baru saja meninjau Dashboard Strategis Invila™ dan ingin menjadwalkan Site Audit Teknis/Finansial.`;
+            const pesanWA = `Halo Pak Piator, saya ${name} (${role}) dari ${comp}. Saya ingin menjadwalkan Site Audit Teknis/Finansial.`;
             document.getElementById('wa-link').href = `https://wa.me/6285890135859?text=${encodeURIComponent(pesanWA)}`;
-
-            try {
-                fetch(`${scriptURL}?name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}&comp=${encodeURIComponent(comp)}&action=Login VIP`, { mode: 'no-cors' });
-            } catch (e) { console.log("Telemetry bypassed."); }
         });
 
         function forwardToCFO() {
             const params = new URLSearchParams(window.location.search);
             const comp = params.get('comp') || "Mitra Industri";
             const cfoLink = `https://zerocapexwaterinfrastructure.com/gateway/?name=CFO&role=CFO&comp=${encodeURIComponent(comp)}`;
-            const pesanWA = `Halo Pak, saya baru saja meninjau infrastruktur air cerdas dari Invila™ untuk ${comp}. Mereka menawarkan model Zero-CapEx yang sangat menarik untuk efisiensi EBITDA kita. Mohon tinjau dashboard finansial mereka di sini: ${cfoLink}`;
+            
+            const pesanWA = 
+                `Pak, saya baru saja mereview utilitas air 1.000 m3 kita. Terdeteksi risiko *biaya hanyut sebesar Rp2,2 Miliar per tahun* yang tersamar di laporan umum.\n\n` +
+                `Saya sudah temukan solusi via skema *Invila™ Water-as-a-Service*. Kelebihannya:\n\n` +
+                `1. *Zero Capex:* Tidak membebani budget tahun ini.\n` +
+                `2. *Operational Peace:* Risiko teknis pindah ke pihak ketiga.\n` +
+                `3. *Instant EBITDA Boost:* Penghematan langsung berdampak pada laba bersih.\n\n` +
+                `Mohon Bapak tinjau **SIMULASI DAMPAK EBITDA & CASH FLOW** khusus untuk *${comp}* di sini:\n${cfoLink}\n\n` +
+                `Apakah Bapak ada waktu diskusi singkat minggu ini?`;
+            
             window.open(`https://wa.me/?text=${encodeURIComponent(pesanWA)}`, '_blank');
         }
 
