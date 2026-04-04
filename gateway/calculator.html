@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>INVILA™ | Universal Strategic Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Serif:wght@900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body { background-color: #060b14; color: #ffffff; font-family: 'Inter', sans-serif; min-height: 100dvh; display: flex; align-items: center; justify-content: center; }
+        .font-brand { font-family: 'Noto Serif', serif; line-height: 1; }
+        .tm-style { display: inline-block; font-size: 0.55em; font-family: 'Inter', sans-serif; margin-left: 4px; font-weight: 900; transform: translateY(0.15em); }
+        .glass-card { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); }
+        .pdf-stage { position: absolute; left: -9999px; top: 0; z-index: -50; opacity: 0; }
+        .pdf-page { width: 210mm; height: 297mm; padding: 25mm; background: white; color: #001b44; display: flex; flex-direction: column; position: relative; }
+        .letter-text { font-size: 11pt; line-height: 1.6; color: #000; text-align: justify; }
+    </style>
+</head>
+<body class="p-6">
+    <a href="index.html" class="fixed top-6 left-6 text-white/50 hover:text-white flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all">
+        ← Kembali ke Gateway
+    </a>
+
+    <div class="w-full max-w-2xl glass-card rounded-[3rem] p-10 shadow-2xl my-10">
+        <div class="mb-8 border-b border-white/10 pb-6 flex items-center gap-4">
+            <img src="../logo-invila-white.png" class="h-12" alt="INVILA">
+            <div>
+                <h1 class="font-brand text-white text-3xl flex">INVILA<span class="tm-style">™</span></h1>
+                <p class="text-[9px] font-black text-blue-400 uppercase tracking-widest">Universal Strategic Platform</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="space-y-4">
+                <h3 class="text-xs font-black text-blue-400 uppercase tracking-widest">Client Identity</h3>
+                <input type="text" id="client_name" value="PT HASSIA PACIFIC" oninput="updateAll()" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-700 outline-none text-white font-bold">
+                <textarea id="client_addr" oninput="updateAll()" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-700 outline-none text-white text-xs h-24 resize-none">Kawasan Industri Jababeka J. Danau Sentanu No. 5 Cikarang-Kabupaten Bekasi 17530.</textarea>
+                <input type="text" id="attn_name" value="Bpk. Deni Sumargo" oninput="updateAll()" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-700 outline-none text-white font-bold">
+                <input type="text" id="attn_role" value="CFO" oninput="updateAll()" class="w-full bg-slate-900/50 p-4 rounded-2xl border border-slate-700 outline-none text-white text-sm">
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-xs font-black text-blue-400 uppercase tracking-widest">Financial Parameters</h3>
+                <div class="bg-slate-900/50 p-4 rounded-2xl border border-slate-700">
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Usage (m³/day)</label>
+                    <input type="number" id="flow" value="1500" oninput="updateAll()" class="w-full bg-transparent text-white font-black text-xl outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-900/50 p-4 rounded-2xl border border-slate-700">
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Clean Water</label>
+                        <input type="number" id="t_clean" value="14500" oninput="updateAll()" class="w-full bg-transparent text-white font-bold text-lg outline-none">
+                    </div>
+                    <div class="bg-slate-900/50 p-4 rounded-2xl border border-slate-700">
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Waste (85%)</label>
+                        <input type="number" id="t_waste" value="14000" oninput="updateAll()" class="w-full bg-transparent text-white font-bold text-lg outline-none">
+                    </div>
+                </div>
+                <div class="bg-blue-600/20 p-4 rounded-2xl border border-blue-500">
+                    <label class="block text-[10px] font-bold text-blue-400 uppercase mb-1">Invila Managed Rate</label>
+                    <input type="number" id="t_invila" value="5500" oninput="updateAll()" class="w-full bg-transparent text-white font-black text-xl outline-none">
+                </div>
+            </div>
+        </div>
+
+        <button onclick="generateOfficialPDF()" id="btn-pdf" class="w-full bg-blue-600 text-white py-6 rounded-[2rem] font-black uppercase tracking-[0.2em] text-sm shadow-2xl hover:bg-blue-500 active:scale-95 transition-all">
+            Generate Official Proposal
+        </button>
+    </div>
+
+    <div class="pdf-stage">
+        <div id="pdf-page-1" class="pdf-page">
+            <div class="flex justify-between items-start border-b-4 border-[#001b44] pb-8 mb-10">
+                <div class="flex items-start gap-6">
+                    <img src="../logo-invila-white.png" style="filter: brightness(0); height: 60px; margin-top: 15px;">
+                    <div class="flex flex-col">
+                        <h1 class="font-brand text-[#001b44] text-5xl flex">INVILA<span class="tm-style" style="color:#001b44;">™</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-blue-600">Water as a Service by Zero CapEx</p>
+                    </div>
+                </div>
+                <div class="text-right text-[10px] font-bold uppercase text-slate-400">
+                    PT Invila Tirta Nusantara<br>Harapan Indah, Bekasi
+                </div>
+            </div>
+            <div class="letter-text">
+                <div class="mb-8">
+                    <p>No : 044/ITN-MKT/IV/2026</p>
+                    <p>Hal : <b>Penawaran Kerjasama Pengelolaan Air Bersih (WaaS)</b></p>
+                    <p class="mt-2">Bekasi, 04 April 2026</p>
+                </div>
+                <div class="mb-8">
+                    <p>Kepada Yth,</p>
+                    <p><b id="pdf_client_name" class="uppercase">PT HASSIA PACIFIC</b></p>
+                    <p id="pdf_client_addr">Alamat Klien...</p>
+                    <p class="mt-4">u.p. <b id="pdf_attn">Nama (Role)</b></p>
+                </div>
+                <p class="mb-4">Dengan hormat,</p>
+                <p class="mb-4">Kami dari <b>INVILA™</b> bermaksud mengajukan penawaran kerjasama strategis dalam pengelolaan air bersih industri dengan model <b>Water as a Service (WaaS)</b> berbasis <b>Zero CapEx</b>.</p>
+                <p class="mb-4">Sistem kami dirancang untuk memproteksi EBITDA perusahaan Anda dengan mengeliminasi struktur biaya kawasan yang fluktuatif menjadi tarif yang stabil. Terlampir pada halaman berikutnya, kami sertakan analisis optimasi biaya berdasarkan parameter operasional di lokasi Anda.</p>
+                <p class="mb-10">Demikian penawaran ini kami sampaikan. Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.</p>
+                <div class="mt-20">
+                    <p>Hormat kami,</p>
+                    <p><b>PT Invila Tirta Nusantara</b></p>
+                    <div class="h-24"></div>
+                    <p><b>IRFON DESMAN, S.E., M.B.A.</b></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="pdf-page-2" class="pdf-page">
+            <div class="flex justify-between items-start border-b-4 border-[#001b44] pb-8 mb-8">
+                <div class="flex items-center gap-6">
+                    <img src="../logo-invila-white.png" style="filter: brightness(0); height: 40px;">
+                    <h1 class="font-brand text-[#001b44] text-3xl">INVILA<span class="tm-style" style="color:#001b44;">™</span></h1>
+                </div>
+                <h2 class="text-xl font-black italic">STRATEGIC ADVISORY</h2>
+            </div>
+            <div class="mb-8 p-8 bg-slate-50 rounded-2xl border-l-8 border-[#001b44]">
+                <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Impact Analysis For:</p>
+                <h3 id="pdf_res_name" class="text-3xl font-black text-[#001b44] uppercase">PT HASSIA PACIFIC</h3>
+            </div>
+            <table class="w-full text-sm border-collapse rounded-xl overflow-hidden mb-10">
+                <tr class="bg-[#001b44] text-white">
+                    <th class="p-4 text-left uppercase text-[10px]">Component</th>
+                    <th class="p-4 text-right uppercase text-[10px]">Legacy</th>
+                    <th class="p-4 text-right uppercase text-[10px] bg-blue-600">Invila</th>
+                </tr>
+                <tr class="border-b"><td class="p-4">Clean Water</td><td id="pdf_tc" class="p-4 text-right">0</td><td class="p-4 text-right" rowspan="2" style="vertical-align:middle"><b id="pdf_ti" class="text-xl">0</b></td></tr>
+                <tr class="border-b"><td class="p-4">Waste (85%)</td><td id="pdf_tw" class="p-4 text-right text-red-600">0</td></tr>
+                <tr class="bg-slate-50 font-black"><td class="p-4">Real Impact</td><td id="pdf_total_m3" class="p-4 text-right text-red-600">0</td><td id="pdf_ti_total" class="p-4 text-right text-blue-600">0</td></tr>
+            </table>
+            <div class="grid grid-cols-2 gap-6 mb-10">
+                <div class="bg-blue-600 text-white p-6 rounded-2xl text-center"><p class="text-[9px] uppercase mb-1">Annual EBITDA Gain</p><p id="pdf_annual" class="text-2xl font-black">Rp 0</p></div>
+                <div class="border-2 p-6 rounded-2xl text-center"><p class="text-[9px] uppercase mb-1">CapEx Offset</p><p id="pdf_capex" class="text-2xl font-black">Rp 0</p></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function fmt(n) {
+            if (n >= 1e9) return 'Rp ' + (n / 1e9).toFixed(2) + ' Miliar';
+            return 'Rp ' + Math.round(n).toLocaleString('id-ID');
+        }
+
+        function updateAll() {
+            const name = document.getElementById('client_name').value;
+            const addr = document.getElementById('client_addr').value;
+            const attn = document.getElementById('attn_name').value;
+            const role = document.getElementById('attn_role').value;
+            const v = parseFloat(document.getElementById('flow').value) || 0;
+            const tc = parseFloat(document.getElementById('t_clean').value) || 0;
+            const tw = parseFloat(document.getElementById('t_waste').value) || 0;
+            const ti = parseFloat(document.getElementById('t_invila').value) || 0;
+
+            const legacy = tc + (0.85 * tw);
+            const saving = (legacy - ti) * v * 365;
+
+            document.getElementById('pdf_client_name').innerText = name;
+            document.getElementById('pdf_client_addr').innerText = addr;
+            document.getElementById('pdf_attn').innerText = `${attn} (${role})`;
+            document.getElementById('pdf_res_name').innerText = name;
+            document.getElementById('pdf_tc').innerText = "Rp " + tc.toLocaleString('id-ID');
+            document.getElementById('pdf_tw').innerText = "Rp " + (0.85 * tw).toLocaleString('id-ID');
+            document.getElementById('pdf_total_m3').innerText = "Rp " + legacy.toLocaleString('id-ID');
+            document.getElementById('pdf_ti').innerText = "Rp " + ti.toLocaleString('id-ID');
+            document.getElementById('pdf_ti_total').innerText = "Rp " + ti.toLocaleString('id-ID');
+            document.getElementById('pdf_annual').innerText = fmt(saving);
+            document.getElementById('pdf_capex').innerText = fmt((v / 86.4) * 250000000);
+        }
+
+        async function generateOfficialPDF() {
+            const btn = document.getElementById('btn-pdf');
+            btn.innerText = "Processing...";
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'mm', 'a4');
+            const canvas1 = await html2canvas(document.getElementById('pdf-page-1'), { scale: 3, useCORS: true });
+            doc.addImage(canvas1.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
+            doc.addPage();
+            const canvas2 = await html2canvas(document.getElementById('pdf-page-2'), { scale: 3, useCORS: true });
+            doc.addImage(canvas2.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
+            doc.save(`INVILA_Proposal_${document.getElementById('client_name').value}.pdf`);
+            btn.innerText = "Generate Official Proposal";
+        }
+        window.onload = updateAll;
+    </script>
+</body>
+</html>
