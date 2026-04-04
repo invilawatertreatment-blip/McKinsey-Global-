@@ -9,13 +9,18 @@
     <style>
         body { background-color: #020617; font-family: 'Inter', sans-serif; color: white; }
         .font-brand { font-family: 'Noto Serif', serif; line-height: 1; }
+        
+        /* Standard TM Alignment */
         .tm-style { 
             display: inline-block; font-size: 0.55em; font-family: 'Inter', sans-serif; 
             margin-left: 4px; font-weight: 900; line-height: 1; transform: translateY(0.15em); 
         }
+        
+        /* Brand Tagline Colors */
         .tagline-blue { color: #3b82f6; font-weight: 700; text-transform: uppercase; }
         .italic-gray { color: #94a3b8; font-style: italic; font-family: 'Noto Serif', serif; margin: 0 6px; }
         .zero-capex { color: #60a5fa; font-weight: 900; text-transform: uppercase; }
+        
         .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.5); }
     </style>
 </head>
@@ -35,7 +40,7 @@
                 </div>
             </div>
             <div class="text-left md:text-right">
-                <div id="auth-tag" class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 text-[10px] font-bold uppercase tracking-widest">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 text-[10px] font-bold uppercase tracking-widest">
                     SECURE ACCESS GRANTED
                 </div>
                 <h2 class="text-lg md:text-xl font-black text-slate-500 uppercase tracking-tighter italic mt-2">STRATEGIC GATEWAY</h2>
@@ -45,19 +50,21 @@
 
     <main class="max-w-7xl mx-auto px-6 py-12 md:py-20">
         <div class="mb-12">
-            <h3 id="welcome-msg" class="text-2xl md:text-4xl font-light text-white/70 leading-snug">
+            <h3 class="text-2xl md:text-4xl font-light text-white/70 leading-snug">
                 Selamat Datang, <span id="user-name" class="text-white font-black border-b-4 border-royalBlue">Executive</span>.
             </h3>
-            <p id="comp-msg" class="text-lg md:text-xl text-slate-400 mt-4 font-medium italic">Menampilkan analisis optimasi EBITDA untuk <span id="user-comp" class="text-white">Mitra Industri</span>.</p>
+            <p class="text-lg md:text-xl text-slate-400 mt-4 font-medium italic">
+                Menampilkan analisis optimasi EBITDA untuk <span id="user-comp" class="text-white">Mitra Industri</span>.
+            </p>
         </div>
 
         <div id="stats-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
             </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a href="../calculator.html" class="bg-royalBlue hover:bg-blue-500 text-white p-8 rounded-[2rem] flex flex-col items-center justify-center gap-4 transition-all shadow-[0_20px_50px_rgba(37,99,235,0.3)] group active:scale-95">
+            <a href="../calculator.html" class="bg-royalBlue hover:bg-blue-500 text-white p-8 rounded-[2rem] flex flex-col items-center justify-center gap-4 transition-all shadow-[0_20px_50px_rgba(37,99,235,0.3)] group">
                 <svg class="w-10 h-10 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z"></path></svg>
-                <span class="font-black uppercase tracking-[0.2em] text-xl">Open Strategic Engine</span>
+                <span class="font-black uppercase tracking-[0.2em] text-xl text-center">Open Strategic Engine</span>
             </a>
 
             <button onclick="requestAudit()" class="glass-card text-white p-8 rounded-[2rem] flex flex-col items-center justify-center gap-4 hover:bg-slate-800 transition-all group">
@@ -66,15 +73,13 @@
             </button>
         </div>
 
-        <div class="mt-20 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/10 pt-10">
-            <div class="flex items-center gap-6">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-royalBlue to-mckNavy flex items-center justify-center text-2xl font-black shadow-xl">PS</div>
-                <div>
-                    <h4 class="font-black text-xl">Piator Simbolon</h4>
-                    <p class="text-invilaGold text-[10px] font-bold uppercase tracking-widest leading-none">Senior Lead System Architect</p>
-                </div>
+        <div class="mt-20 border-t border-white/10 pt-10 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-[0.4em]">Invila™ Strategic Advisor Group | 2026</p>
+            <div class="flex items-center gap-4">
+                <p class="text-[10px] font-black text-white uppercase tracking-widest">Piator Simbolon</p>
+                <div class="h-4 w-px bg-white/20"></div>
+                <p class="text-[9px] font-bold text-invilaGold uppercase tracking-widest leading-none">Senior Lead System Architect</p>
             </div>
-            <p class="text-[9px] font-bold text-slate-500 uppercase tracking-[0.4em]">Invila™ Strategic Advisor Group | 2026</p>
         </div>
     </main>
 
@@ -88,19 +93,24 @@
         document.getElementById('user-comp').innerText = comp;
 
         const dash = document.getElementById('stats-grid');
+        
+        // CSS CLASSES: text-xs (lebih besar), text-white (dari grey ke putih), tracking-widest (premium)
+        const labelClass = "text-xs font-bold text-white uppercase tracking-widest mb-3";
+        const valueClass = "text-2xl font-black text-white";
+
         if (role === 'CFO') {
             dash.innerHTML = `
-                <div class="glass-card p-6 rounded-2xl text-center"><p class="text-[9px] uppercase text-slate-500 mb-2">Annual Saving</p><p class="text-xl font-black text-emerald-400">Rp 6,64 M</p></div>
-                <div class="glass-card p-6 rounded-2xl text-center"><p class="text-[9px] uppercase text-slate-500 mb-2">CapEx Offset</p><p class="text-xl font-black text-royalBlue">Rp 5,79 M</p></div>
-                <div class="glass-card p-6 rounded-2xl text-center"><p class="text-[9px] uppercase text-slate-500 mb-2">ROI (WaaS)</p><p class="text-xl font-black text-white">INFINITE</p></div>
-                <div class="glass-card p-6 rounded-2xl text-center"><p class="text-[9px] uppercase text-slate-500 mb-2">Model</p><p class="text-xl font-black text-invilaGold underline">OFF-BALANCE</p></div>
+                <div class="glass-card p-6 rounded-2xl text-center"><p class="${labelClass}">Annual Saving</p><p class="text-2xl font-black text-emerald-400">Rp 6,64 M</p></div>
+                <div class="glass-card p-6 rounded-2xl text-center"><p class="${labelClass}">CapEx Offset</p><p class="${valueClass} text-royalBlue">Rp 5,79 M</p></div>
+                <div class="glass-card p-6 rounded-2xl text-center"><p class="${labelClass}">ROI (WaaS)</p><p class="${valueClass}">INFINITE</p></div>
+                <div class="glass-card p-6 rounded-2xl text-center"><p class="${labelClass}">Model</p><p class="text-2xl font-black text-invilaGold">OFF-BALANCE</p></div>
             `;
         } else {
             dash.innerHTML = `
-                <div class="glass-card p-6 rounded-2xl text-center"><p class="text-[9px] uppercase text-slate-500 mb-2">Outlet Turbidity</p><p class="text-xl font-black text-emerald-400">< 0.15 NTU</p></div>
-                <div class="glass-card p-6 rounded-2xl text-center"><p class="text-[9px] uppercase text-slate-500 mb-2">System Uptime</p><p class="text-xl font-black text-royalBlue">99.98%</p></div>
-                <div class="glass-card p-6 rounded-2xl text-center"><p class="text-[9px] uppercase text-slate-500 mb-2">Auto-Backwash</p><p class="text-xl font-black text-white">ENABLED</p></div>
-                <div class="glass-card p-6 rounded-2xl text-center"><p class="text-[9px] uppercase text-slate-500 mb-2">Monitoring</p><p class="text-xl font-black text-invilaGold">REAL-TIME</p></div>
+                <div class="glass-card p-6 rounded-2xl text-center"><p class="${labelClass}">Outlet Turbidity</p><p class="text-2xl font-black text-emerald-400">< 0.15 NTU</p></div>
+                <div class="glass-card p-6 rounded-2xl text-center"><p class="${labelClass}">System Uptime</p><p class="${valueClass} text-royalBlue">99.98%</p></div>
+                <div class="glass-card p-6 rounded-2xl text-center"><p class="${labelClass}">Auto-Backwash</p><p class="${valueClass}">ENABLED</p></div>
+                <div class="glass-card p-6 rounded-2xl text-center"><p class="${labelClass}">Monitoring</p><p class="text-2xl font-black text-invilaGold">REAL-TIME</p></div>
             `;
         }
 
