@@ -3,110 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>INVILA™ | Strategic Advisory Platform</title>
+    <title>INVILA™ | Universal Strategic Platform</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Noto+Serif:wght@900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
-        /* UI WEB (Dark Mode Executive) */
-        body { background-color: #020617; color: #ffffff; font-family: 'Inter', sans-serif; min-height: 100dvh; display: flex; align-items: center; justify-content: center; }
-        .glass-card { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
-        .font-serif-lux { font-family: 'Playfair Display', serif; }
+        /* ==================== UI WEB PREMIUM (GOLD & NAVY PATTERN) ==================== */
+        body { background-color: #060b14; color: #ffffff; font-family: 'Inter', sans-serif; min-height: 100dvh; display: flex; align-items: center; justify-content: center; }
+        .font-brand { font-family: 'Noto Serif', serif; line-height: 1; }
+        .tm-style { display: inline-block; font-size: 0.55em; font-family: 'Inter', sans-serif; margin-left: 4px; font-weight: 900; transform: translateY(0.15em); }
         
-        /* ------------------------------------------------------------------
-           THE MCKINSEY PDF ENGINE (Strict A4, High Resolution Rendering)
-           ------------------------------------------------------------------ */
+        /* Menggunakan warna #0b1221 (Navy) dan border #1f2937 dari referensi Bapak */
+        .glass-card { background: rgba(11, 18, 33, 0.95); backdrop-filter: blur(15px); border: 1px solid #1f2937; }
+        
+        /* ==================== THE MCKINSEY PDF ENGINE (BACKEND) ==================== */
         .pdf-wrapper { position: fixed; top: 100vh; left: 0; z-index: -100; opacity: 0; pointer-events: none; }
         .a4-page { width: 794px; height: 1123px; background: #ffffff; color: #0f172a; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; position: relative; box-sizing: border-box; }
-        
-        /* Margin & Spacing */
         .pdf-content { padding: 50px 60px; flex-grow: 1; }
         
-        /* Header Styling */
         .mck-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #00205B; padding-bottom: 20px; margin-bottom: 30px; }
         .mck-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 24px; color: #00205B; text-transform: uppercase; letter-spacing: -0.5px; }
         
-        /* Data Boxes */
         .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 30px; }
         .data-box { border: 1px solid #e2e8f0; padding: 15px; text-align: center; background: #f8fafc; }
         .data-box-blue { border: 1px solid #00205B; padding: 15px; text-align: center; background: #00205B; color: white; }
         .box-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 5px; }
         .box-val { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 22px; }
         
-        /* The Table */
         .mck-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
         .mck-table th { background: #00205B; color: white; padding: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-align: left; }
         .mck-table td { padding: 14px 12px; border-bottom: 1px solid #cbd5e1; font-size: 12px; color: #0f172a; }
         
-        /* Footer / Signatures */
         .mck-footer { padding: 30px 60px; background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: flex-end; }
     </style>
 </head>
 <body class="p-6">
-    <a href="index.html" class="fixed top-8 left-8 text-white/30 hover:text-white transition-all text-xs font-black tracking-widest uppercase">← Back</a>
+    <a href="index.html" class="fixed top-6 left-6 text-[#9ca3af] hover:text-[#d4af37] flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-all">
+        ← Kembali ke Gateway
+    </a>
 
-    <div class="w-full max-w-2xl glass-card rounded-3xl p-10 shadow-2xl my-10">
-        <div class="mb-10 flex items-center justify-between border-b border-white/10 pb-6">
-            <div class="flex items-center gap-4">
-                <img src="../logo-invila-white.png" class="h-10" alt="Logo">
-                <div class="h-8 w-px bg-white/20"></div>
-                <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest leading-tight">Strategic<br>Engine</p>
+    <div class="w-full max-w-2xl glass-card rounded-[3rem] p-10 shadow-2xl my-10">
+        <div class="mb-8 border-b border-[#1f2937] pb-6 flex items-center gap-4">
+            <img src="../logo-invila-white.png" class="h-12" alt="INVILA">
+            <div>
+                <h1 class="font-brand text-white text-3xl flex">INVILA<span class="tm-style">™</span></h1>
+                <p class="text-[9px] font-black text-[#d4af37] uppercase tracking-widest">Universal Strategic Platform</p>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div class="space-y-4">
-                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Target Client</h3>
-                <input type="text" id="client_name" value="PT HASSIA PACIFIC" oninput="updateAll()" class="w-full bg-[#0f172a] p-4 rounded-xl border border-slate-700 outline-none text-white font-bold text-sm">
-                <input type="text" id="attn_name" value="Bpk. Deni Sumargo (CFO)" oninput="updateAll()" class="w-full bg-[#0f172a] p-4 rounded-xl border border-slate-700 outline-none text-white text-xs">
+                <h3 class="text-xs font-black text-[#d4af37] uppercase tracking-widest">Client Identity</h3>
+                
+                <input type="text" id="client_name" value="PT HASSIA PACIFIC" oninput="updateAll()" class="w-full bg-[#1a2333] p-4 rounded-2xl border border-[#374151] focus:border-[#d4af37] outline-none text-white font-bold transition-all" placeholder="Nama Perusahaan">
+                
+                <textarea id="client_addr" oninput="updateAll()" class="w-full bg-[#1a2333] p-4 rounded-2xl border border-[#374151] focus:border-[#d4af37] outline-none text-white text-xs h-24 resize-none transition-all" placeholder="Alamat Lengkap">Kawasan Industri Jababeka J. Danau Sentanu No. 5 Cikarang-Kabupaten Bekasi 17530.</textarea>
+                
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" id="attn_name" value="Deni Sumargo" oninput="updateAll()" class="w-full bg-[#1a2333] p-4 rounded-2xl border border-[#374151] focus:border-[#d4af37] outline-none text-white font-bold text-xs transition-all" placeholder="Nama PIC">
+                    
+                    <input type="text" id="attn_role" value="CFO" oninput="updateAll()" class="w-full bg-[#1a2333] p-4 rounded-2xl border border-[#374151] focus:border-[#d4af37] outline-none text-white text-xs transition-all" placeholder="Jabatan">
+                </div>
             </div>
             
             <div class="space-y-4">
-                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Cost Anatomy (Rp)</h3>
-                <div class="bg-[#0f172a] p-3 rounded-xl border border-slate-700">
-                    <label class="block text-[9px] font-bold text-slate-500 uppercase mb-1">Debit Harian (m³/day)</label>
+                <h3 class="text-xs font-black text-[#d4af37] uppercase tracking-widest">Financial Parameters</h3>
+                
+                <div class="bg-[#1a2333] p-4 rounded-2xl border border-[#374151] focus-within:border-[#d4af37] transition-all">
+                    <label class="block text-[10px] font-bold text-[#9ca3af] uppercase mb-1">Usage (m³/day)</label>
                     <input type="number" id="flow" value="1500" oninput="updateAll()" class="w-full bg-transparent text-white font-black text-xl outline-none">
                 </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="bg-[#0f172a] p-3 rounded-xl border border-slate-700">
-                        <label class="block text-[9px] font-bold text-slate-500 uppercase mb-1">Tarif PDAM/Air</label>
-                        <input type="number" id="t_clean" value="14600" oninput="updateAll()" class="w-full bg-transparent text-white font-bold text-sm outline-none">
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-[#1a2333] p-4 rounded-2xl border border-[#374151] focus-within:border-[#d4af37] transition-all">
+                        <label class="block text-[10px] font-bold text-[#9ca3af] uppercase mb-1">Clean Water</label>
+                        <input type="number" id="t_clean" value="14600" oninput="updateAll()" class="w-full bg-transparent text-white font-bold text-lg outline-none">
                     </div>
-                    <div class="bg-[#0f172a] p-3 rounded-xl border border-slate-700">
-                        <label class="block text-[9px] font-bold text-slate-500 uppercase mb-1">Surcharge Limbah</label>
-                        <input type="number" id="t_waste" value="0" oninput="updateAll()" class="w-full bg-transparent text-white font-bold text-sm outline-none" placeholder="Isi 0 jika tdk ada">
+                    <div class="bg-[#1a2333] p-4 rounded-2xl border border-[#374151] focus-within:border-[#d4af37] transition-all">
+                        <label class="block text-[10px] font-bold text-[#9ca3af] uppercase mb-1">Waste (85%)</label>
+                        <input type="number" id="t_waste" value="0" oninput="updateAll()" class="w-full bg-transparent text-white font-bold text-lg outline-none" placeholder="Isi 0">
                     </div>
                 </div>
-                <div class="bg-blue-600/20 p-3 rounded-xl border border-blue-500">
-                    <label class="block text-[9px] font-bold text-blue-400 uppercase mb-1">Tarif WaaS Invila</label>
-                    <input type="number" id="t_invila" value="5500" oninput="updateAll()" class="w-full bg-transparent text-blue-400 font-black text-xl outline-none">
+                
+                <div class="bg-[#0d1a35] p-4 rounded-2xl border border-[#1e3a8a]">
+                    <label class="block text-[10px] font-bold text-[#d4af37] uppercase mb-1">Invila Managed Rate</label>
+                    <input type="number" id="t_invila" value="5500" oninput="updateAll()" class="w-full bg-transparent text-white font-black text-xl outline-none">
                 </div>
             </div>
         </div>
 
-        <button onclick="generateOfficialPDF()" id="btn-pdf" class="w-full bg-blue-600 text-white py-5 rounded-xl font-black uppercase tracking-[0.2em] text-xs shadow-lg hover:bg-blue-500 transition-all">
-            Generate Advisory Report
+        <button onclick="generateOfficialPDF()" id="btn-pdf" class="w-full bg-[#d4af37] text-[#0b1221] py-6 rounded-[2rem] font-black uppercase tracking-[0.2em] text-sm shadow-2xl hover:bg-[#b0902d] active:scale-95 transition-all">
+            Generate Official Proposal
         </button>
     </div>
 
     <div class="pdf-wrapper">
-        
         <div id="pdf-page-1" class="a4-page">
             <div class="pdf-content">
                 <div class="mck-header">
                     <div class="flex items-center gap-4">
                         <img src="../logo-invila-white.png" style="height: 45px; filter: invert(100%);" alt="Logo">
                         <div>
-                            <h2 class="font-bold text-[#00205B] text-xl leading-none">INVILA™</h2>
+                            <h2 class="font-bold text-[#00205B] text-xl leading-none" style="font-family:'Noto Serif',serif;">INVILA™</h2>
                             <p class="text-[9px] font-black uppercase tracking-widest text-[#00205B] mt-1">Water as a Service <span class="font-normal italic text-slate-500">by</span> Zero CapEx</p>
                         </div>
                     </div>
                     <div class="text-right">
                         <p class="text-[10px] font-black tracking-[2px] uppercase text-[#e31837]">Confidential Memorandum</p>
-                        <p class="text-[9px] font-bold text-slate-400 uppercase mt-1" id="pdf_ref">REF: 001/INV-SAV/2026</p>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">REF: 001/INV-SAV/2026</p>
                         <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">Prepared By: Irfon Desman, S.E., M.B.A.</p>
                     </div>
                 </div>
@@ -182,7 +189,7 @@
         </div>
 
         <div id="pdf-page-2" class="a4-page">
-            <div class="pdf-content">
+            <div class="pdf-content flex flex-col h-full">
                 <div class="mck-header">
                     <div class="flex items-center gap-4">
                         <img src="../logo-invila-white.png" style="height: 40px; filter: invert(100%);">
@@ -193,13 +200,13 @@
                     </div>
                 </div>
 
-                <div class="mt-20 text-center">
-                    <p class="text-sm font-black uppercase tracking-[0.3em] text-[#00205B] mb-4">Projected 5-Year Financial Impact</p>
-                    <div class="inline-block border-4 border-[#00205B] rounded-3xl px-20 py-12 bg-[#f8fafc] shadow-lg">
+                <div class="mt-20 flex-grow flex flex-col items-center justify-center">
+                    <p class="text-sm font-black uppercase tracking-[0.3em] text-[#00205B] mb-6">Projected 5-Year Financial Impact</p>
+                    <div class="inline-block border-4 border-[#00205B] rounded-3xl px-24 py-16 bg-[#f8fafc] shadow-lg text-center">
                         <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Cumulative Savings Area (Legacy vs WaaS)</p>
                         <p class="font-serif-lux font-black text-6xl text-[#00205B] tracking-tighter" id="pdf_5year">Rp 24.91 Miliar</p>
                     </div>
-                    <p class="text-[11px] italic text-slate-500 mt-8 max-w-xl mx-auto leading-relaxed">
+                    <p class="text-[11px] italic text-slate-500 mt-10 max-w-xl text-center leading-relaxed">
                         *Catatan: Proyeksi ini memvalidasi penghematan akumulatif selama 60 bulan operasional. Angka tarif WaaS Invila™ bersifat indikatif (default) dan akan disesuaikan secara presisi pasca audit teknis serta factory assessment.
                     </p>
                 </div>
@@ -216,7 +223,7 @@
                     <div class="text-right border-l-2 border-slate-300 pl-6">
                         <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">Technical Engineering Validation:</p>
                         <p class="text-sm font-black text-[#00205B] uppercase tracking-widest">Piator Simbolon</p>
-                        <p class="text-[10px] font-bold text-slate-500 uppercase">Water & Strategic Engineer</p>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase">Lead System Architect</p>
                         <p class="text-[9px] font-black text-blue-600 uppercase mt-1 tracking-widest">Invila™ Strategic Room</p>
                     </div>
                 </div>
@@ -225,7 +232,6 @@
     </div>
 
     <script>
-        // Logika Formatting Uang
         function fmtMiliar(n) {
             return 'Rp ' + (n / 1e9).toFixed(2) + ' Miliar';
         }
@@ -234,22 +240,17 @@
         }
 
         function updateAll() {
-            // Ambil Input
             const name = document.getElementById('client_name').value || "PT KLIEN";
             const v = parseFloat(document.getElementById('flow').value) || 0;
             const tc = parseFloat(document.getElementById('t_clean').value) || 0;
-            const tw = parseFloat(document.getElementById('t_waste').value) || 0; // Jika 0, maka 100% PDAM murni
+            const tw = parseFloat(document.getElementById('t_waste').value) || 0;
             const ti = parseFloat(document.getElementById('t_invila').value) || 0;
 
-            // Logika Hibrida (Legacy = Clean + 85% Waste)
             const legacyRate = tc + (0.85 * tw);
-            
-            // Hitungan Keuangan
             const capex = (v / 86.4) * 250000000;
             const annualSaving = (legacyRate - ti) * v * 365;
             const fiveYearSaving = annualSaving * 5;
 
-            // Update DOM Halaman 1
             document.getElementById('foot_name').innerText = name.toUpperCase();
             document.getElementById('pdf_vol').innerText = v.toLocaleString('id-ID') + " m³";
             document.getElementById('pdf_legacy_rate').innerText = fmtRp(legacyRate);
@@ -261,29 +262,25 @@
 
             document.getElementById('pdf_capex').innerText = fmtMiliar(capex);
             document.getElementById('pdf_annual').innerText = fmtMiliar(annualSaving);
-
-            // Update DOM Halaman 2
             document.getElementById('pdf_5year').innerText = fmtMiliar(fiveYearSaving);
         }
 
         async function generateOfficialPDF() {
             const btn = document.getElementById('btn-pdf');
+            const originalText = btn.innerText;
             btn.innerText = "RENDERING MCKINSEY PDF...";
             
             const { jsPDF } = window.jspdf;
-            // PDF disetel ke A4 (210x297mm)
             const doc = new jsPDF('p', 'mm', 'a4'); 
             
             const canvasOpts = { scale: 2, useCORS: true, allowTaint: true, windowWidth: 794, windowHeight: 1123 };
             
-            // Render Hal 1
             const p1 = document.getElementById('pdf-page-1');
             const canvas1 = await html2canvas(p1, canvasOpts);
             doc.addImage(canvas1.toDataURL('image/png', 1.0), 'PNG', 0, 0, 210, 297);
             
             doc.addPage();
             
-            // Render Hal 2
             const p2 = document.getElementById('pdf-page-2');
             const canvas2 = await html2canvas(p2, canvasOpts);
             doc.addImage(canvas2.toDataURL('image/png', 1.0), 'PNG', 0, 0, 210, 297);
@@ -291,7 +288,7 @@
             const cleanName = document.getElementById('client_name').value.replace(/ /g, "_");
             doc.save(`001_INVILA_STRATEGIC_RECOVERY_${cleanName}.pdf`);
             
-            btn.innerText = "GENERATE ADVISORY REPORT";
+            btn.innerText = originalText;
         }
 
         window.onload = updateAll;
