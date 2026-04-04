@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>INVILA™ | Strategic Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Serif:wght@700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { background-color: #060b14; color: #ffffff; font-family: 'Inter', sans-serif; height: 100dvh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .font-brand { font-family: 'Noto Serif', serif; }
+        .tm-align { vertical-align: top; font-size: 0.5em; position: relative; top: 0.15em; }
         .pdf-stage { position: absolute; left: -9999px; top: 0; z-index: -10; opacity: 0; }
         .pdf-page { width: 210mm; height: 297mm; padding: 20mm; background: white; color: #001b44; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
     </style>
@@ -20,7 +22,10 @@
         <div>
             <div class="text-center mb-6">
                 <img src="logo-invila-white.png" alt="Logo" class="h-8 mx-auto mb-3">
-                <h1 class="text-white text-xl font-black tracking-tight uppercase">STRATEGIC ENGINE</h1>
+                <h1 class="text-white text-xl font-black tracking-tight uppercase">
+                    <span class="font-brand">INVILA<sup class="tm-align">™</sup></span> 
+                    <span class="ml-1 text-[#C5A059]">STRATEGIC ENGINE</span>
+                </h1>
             </div>
 
             <div class="space-y-4 mb-6">
@@ -53,21 +58,29 @@
                 Generate Strategic Report
             </button>
         </div>
+
+        <div class="text-center pt-2">
+            <p class="text-[9px] font-bold text-white uppercase tracking-widest leading-none">Irfon Desman, S.E., M.B.A. & Piator Simbolon</p>
+            <p class="text-[7px] text-[#C5A059] uppercase mt-1 tracking-widest">INVILA™ Strategic Room</p>
+        </div>
     </div>
 
     <div class="pdf-stage">
         <div id="pdf-page-1" class="pdf-page">
             <div class="flex justify-between items-center border-b-4 border-[#001b44] pb-6 mb-8">
-                <img src="logo-invila-white.png" style="filter: brightness(0); height: 45px;">
+                <div class="flex items-center gap-3">
+                    <img src="logo-invila-white.png" style="filter: brightness(0); height: 40px;">
+                    <h1 class="font-brand text-2xl font-black text-[#001b44]">INVILA<sup style="vertical-align: top; font-size: 0.5em; position: relative; top: 0.15em;">™</sup></h1>
+                </div>
                 <div class="text-right">
-                    <h1 class="text-2xl font-black text-[#001b44] uppercase tracking-tighter">Strategic Advisory</h1>
-                    <p class="text-[10px] font-bold text-[#001b44]/60 uppercase tracking-widest">REF: 001/INV-SAV/2026</p>
+                    <h1 class="text-xl font-black text-[#001b44] uppercase tracking-tighter italic">ADVISORY REPORT</h1>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">REF: 001/INV-SAV/2026</p>
                 </div>
             </div>
 
             <h2 class="text-3xl font-black text-[#001b44] mb-4 uppercase">Executive Saving Analysis</h2>
-            <p class="text-sm text-slate-600 mb-8 leading-relaxed italic border-l-4 border-[#C5A059] pl-4">
-                "Analisis ini memvalidasi pemulihan biaya utilitas (EBITDA Recovery) melalui model Asset-Light (WaaS). Strategi ini mengamankan stabilitas produksi tanpa beban modal (CapEx)."
+            <p class="text-sm text-slate-600 mb-8 leading-relaxed italic border-l-4 border-[#C5A059] pl-4 text-justify">
+                "Analisis ini memvalidasi pemulihan biaya utilitas (EBITDA Recovery) melalui model Asset-Light (WaaS). Strategi ini mengamankan stabilitas operasional tanpa pengeluaran modal (CapEx)."
             </p>
 
             <div class="bg-slate-50 p-8 rounded-3xl mb-8 border border-slate-200">
@@ -100,14 +113,14 @@
 
             <div class="mt-auto border-t-4 border-[#001b44] pt-8 flex justify-between">
                 <div class="w-1/2 text-center">
-                    <p class="text-[10px] font-black uppercase text-slate-400 mb-4">Technical Validation</p>
-                    <p class="text-lg font-black text-[#001b44] uppercase">PIATOR SIMBOLON</p>
-                    <p class="text-[10px] font-bold text-[#C5A059] uppercase tracking-widest">Senior Lead System Architect</p>
+                    <p class="text-[9px] font-black uppercase text-slate-400 mb-6 tracking-widest">Technical Validation</p>
+                    <p class="text-md font-black text-[#001b44] uppercase">PIATOR SIMBOLON</p>
+                    <p class="text-[9px] font-bold text-[#C5A059] uppercase tracking-widest">Senior Lead System Architect</p>
                 </div>
                 <div class="w-1/2 text-center border-l border-slate-100">
-                    <p class="text-[10px] font-black uppercase text-slate-400 mb-4">Strategic Lead</p>
-                    <p class="text-lg font-black text-[#001b44] uppercase">IRFON DESMAN</p>
-                    <p class="text-[10px] font-bold text-[#C5A059] uppercase tracking-widest">Strategic Manager</p>
+                    <p class="text-[9px] font-black uppercase text-slate-400 mb-6 tracking-widest">Strategic Lead</p>
+                    <p class="text-md font-black text-[#001b44] uppercase">Irfon Desman, S.E., M.B.A.</p>
+                    <p class="text-[9px] font-bold text-[#C5A059] uppercase tracking-widest">Strategic & Marketing Manager</p>
                 </div>
             </div>
             
@@ -144,7 +157,7 @@
 
         async function generatePDF() {
             const btn = document.getElementById('btn-pdf');
-            btn.innerText = "Processing Document...";
+            btn.innerText = "Finalizing Report...";
             btn.disabled = true;
 
             try {
@@ -156,10 +169,10 @@
                     allowTaint: true
                 });
                 doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
-                doc.save(`INVILA_Strategic_Report_2026.pdf`);
+                doc.save(`INVILA_Strategic_Analysis_2026.pdf`);
             } catch (e) {
                 console.error(e);
-                alert("Gagal. Pastikan file logo-invila-white.png ada di repo.");
+                alert("Sistem sibuk. Pastikan koneksi internet stabil.");
             } finally {
                 btn.innerText = "Generate Strategic Report";
                 btn.disabled = false;
